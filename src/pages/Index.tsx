@@ -1,15 +1,182 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Building2, Users, Shield, Database, Cloud, Code, Server, Globe, Phone, Mail, MapPin, ExternalLink, Github, Calendar, CheckCircle } from "lucide-react";
+import { Building2, Users, Shield, Database, Cloud, Code, Server, Globe, Phone, Mail, MapPin, ExternalLink, Github, Calendar, CheckCircle, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const projects = [
-    // Government Projects
+    // New Government Projects
+    {
+      id: 24,
+      title: "Darta Chalani",
+      description: "Official document registration and correspondence tracking system.",
+      category: "government",
+      technologies: ["Java", "Spring Boot", "PostgreSQL", "Angular"],
+      year: "2024",
+      client: "Government Office",
+      status: "Completed",
+      image: "photo-1454165804606-c3d57bc86b40"
+    },
+    {
+      id: 25,
+      title: "Vendor Enlisting",
+      description: "Supplier registration and approval system for procurement processes.",
+      category: "government",
+      technologies: ["C#", ".NET Core", "SQL Server", "React"],
+      year: "2024",
+      client: "Procurement Department",
+      status: "Completed",
+      image: "photo-1507003211169-0a1dd7228f2d"
+    },
+    {
+      id: 26,
+      title: "Valuator Enlisting",
+      description: "Valuator profile management and verification for financial institutions.",
+      category: "government",
+      technologies: ["Python", "Django", "PostgreSQL", "Vue.js"],
+      year: "2024",
+      client: "Financial Regulatory Authority",
+      status: "Completed",
+      image: "photo-1554224155-6726b3ff858f"
+    },
+    {
+      id: 27,
+      title: "CMS System",
+      description: "Dynamic website and content management system for organizations.",
+      category: "government",
+      technologies: ["PHP", "Laravel", "MySQL", "Bootstrap"],
+      year: "2023",
+      client: "Municipal Corporation",
+      status: "Completed",
+      image: "photo-1460925895917-afdab827c52f"
+    },
+    {
+      id: 28,
+      title: "Local Survey & Profile",
+      description: "Municipality profiling and digital survey system with data reporting.",
+      category: "government",
+      technologies: ["React", "Node.js", "MongoDB", "GIS"],
+      year: "2023",
+      client: "Local Government",
+      status: "Completed",
+      image: "photo-1551288049-bebda4e38f71"
+    },
+    {
+      id: 29,
+      title: "Attendance System",
+      description: "Digital attendance tracking with reporting for organizations.",
+      category: "government",
+      technologies: ["Java", "Spring", "Oracle", "Angular"],
+      year: "2023",
+      client: "Government Department",
+      status: "Completed",
+      image: "photo-1434030216411-0b793f4b4173"
+    },
+    // New Private Projects
+    {
+      id: 30,
+      title: "Loan Management",
+      description: "Full loan application, approval, and repayment tracking system.",
+      category: "private",
+      technologies: ["React", "Node.js", "PostgreSQL", "Express"],
+      year: "2024",
+      client: "FinanceFirst Bank",
+      status: "Completed",
+      image: "photo-1554224154-26032ffc0d07"
+    },
+    {
+      id: 31,
+      title: "Lease Management",
+      description: "Tracks lease agreements, payments, and expiry management.",
+      category: "private",
+      technologies: ["Vue.js", "Laravel", "MySQL", "Stripe"],
+      year: "2024",
+      client: "PropertyPro Ltd.",
+      status: "Completed",
+      image: "photo-1560518883-ce09059eeffa"
+    },
+    {
+      id: 32,
+      title: "Maintenance Ticketing",
+      description: "Ticket-based system to handle and resolve maintenance issues.",
+      category: "private",
+      technologies: ["React", "Express.js", "MongoDB", "Socket.io"],
+      year: "2024",
+      client: "FacilityTech Solutions",
+      status: "Completed",
+      image: "photo-1581091226825-a6a2a5aee158"
+    },
+    {
+      id: 33,
+      title: "Project Tracking",
+      description: "Project request, verification, approval, and monitoring system.",
+      category: "private",
+      technologies: ["Angular", "Spring Boot", "PostgreSQL", "Docker"],
+      year: "2023",
+      client: "ProjectFlow Inc.",
+      status: "Completed",
+      image: "photo-1611224923853-80b023f02d71"
+    },
+    {
+      id: 34,
+      title: "Appointment Management",
+      description: "Online appointment scheduling system for offices and institutions.",
+      category: "private",
+      technologies: ["React", "Node.js", "MySQL", "Calendar API"],
+      year: "2023",
+      client: "HealthCare Plus",
+      status: "Completed",
+      image: "photo-1576091160399-112ba8d25d1f"
+    },
+    {
+      id: 35,
+      title: "E-commerce Platform",
+      description: "Online product management, order processing, and payment solution.",
+      category: "private",
+      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      year: "2023",
+      client: "ShopMart Online",
+      status: "Completed",
+      image: "photo-1556742049-0cfed4f6a45d"
+    },
+    {
+      id: 36,
+      title: "ERP System",
+      description: "Full enterprise resource planning solution for businesses and local governments.",
+      category: "private",
+      technologies: ["Java", "Spring Boot", "Oracle", "Angular"],
+      year: "2022",
+      client: "Enterprise Solutions Ltd.",
+      status: "Completed",
+      image: "photo-1460925895917-afdab827c52f"
+    },
+    {
+      id: 37,
+      title: "Training Institute Management",
+      description: "Course, student, and financial management system for training centers.",
+      category: "private",
+      technologies: ["PHP", "CodeIgniter", "MySQL", "jQuery"],
+      year: "2022",
+      client: "SkillUp Training Center",
+      status: "Completed",
+      image: "photo-1522202176988-66273c2fd55f"
+    },
+    {
+      id: 38,
+      title: "School Management",
+      description: "Comprehensive school administration, finance, and academic system.",
+      category: "private",
+      technologies: ["C#", ".NET", "SQL Server", "Bootstrap"],
+      year: "2022",
+      client: "Bright Future School",
+      status: "Completed",
+      image: "photo-1503676260728-1c00da094a0b"
+    },
+    // ... keep existing code (all previous 23 projects)
     {
       id: 1,
       title: "National Tax Management System",
@@ -131,7 +298,6 @@ const Index = () => {
       status: "Completed",
       image: "photo-1483058712412-4245e9b90334"
     },
-    // Private Sector Projects
     {
       id: 12,
       title: "Banking Core System Modernization",
@@ -335,7 +501,7 @@ const Index = () => {
               & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Private Sector</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
-              Delivering cutting-edge technology solutions with over 20+ successful projects 
+              Delivering cutting-edge technology solutions with over 38+ successful projects 
               across government agencies and private enterprises
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -351,15 +517,15 @@ const Index = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">23+</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">38+</div>
               <div className="text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">15+</div>
+              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">21+</div>
               <div className="text-gray-400">Government Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">8+</div>
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">17+</div>
               <div className="text-gray-400">Private Partners</div>
             </div>
             <div className="text-center">
@@ -467,13 +633,19 @@ const Index = () => {
                       <Calendar className="h-4 w-4 mr-2" />
                       {project.year}
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
                         <Badge key={tech} variant="secondary" className="text-xs bg-slate-700 text-gray-300">
                           {tech}
                         </Badge>
                       ))}
                     </div>
+                    <Link to={`/project/${project.id}`}>
+                      <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                        <Eye className="h-4 w-4 mr-2" />
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -490,7 +662,7 @@ const Index = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">About TechOffice Solutions</h2>
               <p className="text-gray-300 mb-6 text-lg">
                 We are a leading IT consultancy specializing in digital transformation for government agencies 
-                and private enterprises. With over 5 years of experience and 20+ successful projects, we deliver 
+                and private enterprises. With over 5 years of experience and 38+ successful projects, we deliver 
                 innovative solutions that drive efficiency and growth.
               </p>
               <p className="text-gray-300 mb-8 text-lg">

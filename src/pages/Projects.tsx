@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -24,7 +23,10 @@ import {
   GraduationCap,
   School,
   Search,
-  ArrowRight
+  ArrowRight,
+  Receipt,
+  DollarSign,
+  HandHeart
 } from 'lucide-react';
 
 const Projects = () => {
@@ -205,7 +207,7 @@ const Projects = () => {
       icon: ShoppingCart,
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       features: [
-        language === 'ne' ? 'उत्पादन सूची, कार्ट, चेकआउट' : 'Product listing, cart, checkout',
+        language === 'ne' ? 'उत्पादन सूची, कार्त, चेकआउट' : 'Product listing, cart, checkout',
         language === 'ne' ? 'भुक्तानी गेटवे' : 'Payment gateway',
         language === 'ne' ? 'बहु-विक्रेता समर्थन' : 'Multi-vendor support'
       ],
@@ -302,6 +304,60 @@ const Projects = () => {
       workflow: language === 'ne'
         ? 'नामांकन → कक्षा असाइनमेन्ट → उपस्थिति → परीक्षा → पदोन्नति'
         : 'Enrollment → Class Assignment → Attendance → Exams → Promotion'
+    },
+    {
+      id: 39,
+      title: language === 'ne' ? 'रिमोट अकाउन्टिङ' : 'Remote Accounting',
+      description: language === 'ne'
+        ? 'दूरदराजका ठाउँबाट खर्च र बिक्री बिलहरू सङ्कलन'
+        : 'Collect expense and sales bills from remote locations',
+      category: 'private',
+      icon: Receipt,
+      technologies: ['React', 'Python FastAPI', 'PostgreSQL', 'AWS S3'],
+      features: [
+        language === 'ne' ? 'मोबाइल बिल स्क्यानिङ र अपलोड' : 'Mobile bill scanning and upload',
+        language === 'ne' ? 'OCR डाटा निकासी र प्रमाणीकरण' : 'OCR data extraction and verification',
+        language === 'ne' ? 'स्वचालित अकाउन्टिङ एन्ट्री' : 'Automated accounting entries'
+      ],
+      workflow: language === 'ne'
+        ? 'बिल स्क्यान → डाटा निकासी → प्रमाणीकरण → अकाउन्टिङ एन्ट्री'
+        : 'Bill Scan → Data Extraction → Verification → Accounting Entry'
+    },
+    {
+      id: 40,
+      title: language === 'ne' ? 'पेरोल प्रणाली' : 'Payroll System',
+      description: language === 'ne'
+        ? 'कर्मचारी तलब र भत्ता व्यवस्थापन'
+        : 'Employee salary and allowance management',
+      category: 'both',
+      icon: DollarSign,
+      technologies: ['Java Spring Boot', 'MySQL', 'Angular', 'Jasper Reports'],
+      features: [
+        language === 'ne' ? 'तलब संरचना र गणना' : 'Salary structure and calculation',
+        language === 'ne' ? 'कर र भत्ता व्यवस्थापन' : 'Tax and allowance management',
+        language === 'ne' ? 'पेस्लिप र वार्षिक कर रिपोर्ट' : 'Payslips and annual tax reports'
+      ],
+      workflow: language === 'ne'
+        ? 'उपस्थिति डाटा → तलब गणना → अनुमोदन → भुक्तानी'
+        : 'Attendance Data → Salary Calculation → Approval → Payment'
+    },
+    {
+      id: 41,
+      title: language === 'ne' ? 'परियोजना बिल सेटलमेन्ट' : 'Project Bill Settlement',
+      description: language === 'ne'
+        ? 'NGO/INGO परियोजनाको बिल र भुक्तानी व्यवस्थापन'
+        : 'NGO/INGO project billing and payment management',
+      category: 'both',
+      icon: HandHeart,
+      technologies: ['Python Django', 'PostgreSQL', 'React', 'Celery'],
+      features: [
+        language === 'ne' ? 'परियोजना बजेट र खर्च ट्र्याकिङ' : 'Project budget and expense tracking',
+        language === 'ne' ? 'दाता रिपोर्टिङ र अनुपालन' : 'Donor reporting and compliance',
+        language === 'ne' ? 'मल्टि-करेन्सी र बहु-फन्डर समर्थन' : 'Multi-currency and multi-funder support'
+      ],
+      workflow: language === 'ne'
+        ? 'बजेट अनुमोदन → खर्च रेकर्ड → बिल तयारी → भुक्तानी → रिपोर्टिङ'
+        : 'Budget Approval → Expense Recording → Bill Preparation → Payment → Reporting'
     }
   ];
 

@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Building2, Users, Shield, Database, Cloud, Code, Server, Globe, Phone, Mail, MapPin, ExternalLink, Github, Calendar, CheckCircle, Eye } from "lucide-react";
+import { Building2, Users, Shield, Database, Cloud, Code, Server, Globe, Phone, Mail, MapPin, ExternalLink, Github, Calendar, CheckCircle, Eye, Award, Target, Lightbulb, MessageSquare, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
   const projects = [
     // New Government Projects
@@ -176,7 +177,6 @@ const Index = () => {
       status: "Completed",
       image: "photo-1503676260728-1c00da094a0b"
     },
-    // ... keep existing code (all previous 23 projects)
     {
       id: 1,
       title: "National Tax Management System",
@@ -465,6 +465,118 @@ const Index = () => {
     }
   ];
 
+  const technologies = [
+    {
+      category: "Backend Frameworks",
+      items: ["Java Spring Boot", "Python Django", "Python FastAPI", "PHP Laravel", "Node.js Express", "C# .NET Core"]
+    },
+    {
+      category: "Frontend Technologies",
+      items: ["React", "Angular", "Vue.js", "Bootstrap", "Tailwind CSS", "TypeScript"]
+    },
+    {
+      category: "Databases",
+      items: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "Oracle", "Redis"]
+    },
+    {
+      category: "Cloud & DevOps",
+      items: ["AWS", "Docker", "Kubernetes", "CI/CD", "Microservices", "Azure"]
+    }
+  ];
+
+  const teamMembers = [
+    {
+      name: "Sarah Chen",
+      role: "Senior Full-Stack Developer",
+      specialization: "Java Spring Boot, React, PostgreSQL",
+      experience: "8 years",
+      image: "photo-1494790108755-2616b612b742"
+    },
+    {
+      name: "Michael Rodriguez",
+      role: "Python Specialist",
+      specialization: "Django, FastAPI, Machine Learning",
+      experience: "6 years",
+      image: "photo-1472099645785-5658abf4ff4e"
+    },
+    {
+      name: "Emily Johnson",
+      role: "Frontend Architect",
+      specialization: "React, Angular, Vue.js, UX/UI",
+      experience: "7 years",
+      image: "photo-1438761681033-6461ffad8d80"
+    },
+    {
+      name: "David Kumar",
+      role: "Database Administrator",
+      specialization: "PostgreSQL, MySQL, Oracle, Performance Tuning",
+      experience: "9 years",
+      image: "photo-1507003211169-0a1dd7228f2d"
+    },
+    {
+      name: "Lisa Thompson",
+      role: "DevOps Engineer",
+      specialization: "AWS, Docker, Kubernetes, CI/CD",
+      experience: "5 years",
+      image: "photo-1534528741775-53994a69daeb"
+    },
+    {
+      name: "James Wilson",
+      role: "PHP Developer",
+      specialization: "Laravel, CodeIgniter, MySQL",
+      experience: "6 years",
+      image: "photo-1560250097-0b93528c311a"
+    }
+  ];
+
+  const successStories = [
+    {
+      title: "National Tax System Launch",
+      description: "Successfully launched the National Tax Management System serving 2M+ citizens",
+      image: "photo-1521791136064-7986c2920216",
+      achievement: "2M+ Users"
+    },
+    {
+      title: "Healthcare System Recognition",
+      description: "Received Excellence Award for Public Healthcare Information System",
+      image: "photo-1559757148-5c350d0d3c56",
+      achievement: "Excellence Award"
+    },
+    {
+      title: "Banking Modernization Success",
+      description: "Completed largest banking core system migration in the region",
+      image: "photo-1554224154-26032ffc0d07",
+      achievement: "$2B+ Transactions"
+    }
+  ];
+
+  const faqs = [
+    {
+      question: "How do you ensure project delivery on time?",
+      answer: "We follow agile methodology with regular sprints, daily standups, and continuous communication with clients. Our project managers use advanced tracking tools and maintain transparent timelines with regular progress updates."
+    },
+    {
+      question: "What technologies do you specialize in?",
+      answer: "We specialize in Java Spring Boot, Python (Django/FastAPI), PHP Laravel, React, Angular, Vue.js, and databases like PostgreSQL, MySQL, and SQL Server. We also have expertise in cloud platforms like AWS and Azure."
+    },
+    {
+      question: "Do you provide post-deployment support?",
+      answer: "Yes, we provide comprehensive support including 24/7 monitoring, regular maintenance, security updates, bug fixes, and feature enhancements. We offer different support packages based on your needs."
+    },
+    {
+      question: "How do you handle project pricing?",
+      answer: "Our pricing is transparent and based on project scope, complexity, timeline, and required resources. We provide detailed estimates after requirement analysis and offer flexible payment terms."
+    },
+    {
+      question: "Can you work with our existing systems?",
+      answer: "Absolutely! We specialize in system integration and can seamlessly connect with your existing infrastructure, databases, and third-party services while ensuring data security and minimal disruption."
+    },
+    {
+      question: "What is your development process?",
+      answer: "We follow a structured approach: Requirement Analysis → System Design → Development → Testing → Deployment → Support. We maintain regular communication and provide demos at each milestone."
+    }
+  ];
+
   const filteredProjects = selectedCategory === "all" 
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
@@ -483,6 +595,7 @@ const Index = () => {
               <a href="#home" className="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
               <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors">Services</a>
               <a href="#projects" className="text-gray-300 hover:text-blue-400 transition-colors">Projects</a>
+              <a href="#team" className="text-gray-300 hover:text-blue-400 transition-colors">Team</a>
               <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
               <a href="#contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
             </div>
@@ -536,6 +649,37 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Technology Stack Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Technology Stack</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              We leverage cutting-edge technologies to deliver robust, scalable solutions
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologies.map((tech, index) => (
+              <Card key={index} className="bg-slate-700/50 border-slate-600">
+                <CardHeader>
+                  <CardTitle className="text-white text-lg">{tech.category}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {tech.items.map((item) => (
+                      <Badge key={item} variant="secondary" className="bg-slate-600 text-gray-300 mr-2 mb-2">
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="services" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
         <div className="max-w-7xl mx-auto">
@@ -562,8 +706,174 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Team Section */}
+      <section id="team" className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Meet Our Expert Team</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Our team of experienced professionals brings precision and expertise to handle complex IT challenges
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-600 hover:bg-slate-800 transition-all duration-300">
+                <CardHeader className="text-center">
+                  <img
+                    src={`https://images.unsplash.com/${member.image}?w=150&h=150&fit=crop`}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                  />
+                  <CardTitle className="text-white text-xl">{member.name}</CardTitle>
+                  <CardDescription className="text-blue-400 font-medium">{member.role}</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-300 mb-3">{member.specialization}</p>
+                  <Badge variant="outline" className="border-green-400 text-green-400">
+                    {member.experience} experience
+                  </Badge>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Success Stories</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Celebrating achievements and milestones with our clients and teams
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {successStories.map((story, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-600 overflow-hidden group hover:scale-105 transition-transform duration-300">
+                <div className="relative">
+                  <img
+                    src={`https://images.unsplash.com/${story.image}?w=400&h=250&fit=crop`}
+                    alt={story.title}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-green-600 text-white">
+                      <Award className="h-4 w-4 mr-1" />
+                      {story.achievement}
+                    </Badge>
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-white text-lg">{story.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300">{story.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Insights Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Leadership Insights</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Perspectives from our experienced leadership team
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Director's Opinion */}
+            <Card className="bg-slate-800/50 border-slate-600">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+                    <Target className="h-8 w-8 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-white text-2xl">Director's Perspective</CardTitle>
+                    <CardDescription className="text-gray-400">On solving complex IT challenges</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-gray-300 leading-relaxed">
+                  "Government and private sector IT projects face unique challenges - from regulatory compliance to scalability demands. Our approach focuses on understanding these specific pain points and delivering solutions that not only meet current needs but anticipate future requirements."
+                </p>
+                <p className="text-gray-300 leading-relaxed">
+                  "The key to successful IT transformation lies in combining technical excellence with deep domain knowledge. Our applications are designed to solve real-world problems with precision and reliability."
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Project Manager's Opinion */}
+            <Card className="bg-slate-800/50 border-slate-600">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center">
+                    <Lightbulb className="h-8 w-8 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-white text-2xl">Project Manager's Approach</CardTitle>
+                    <CardDescription className="text-gray-400">Building trust through collaboration</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-gray-300 leading-relaxed">
+                  "Understanding client problems is just the beginning. We build trust by maintaining transparent communication, setting realistic expectations, and delivering on our promises. Our step-by-step approach ensures clients are comfortable throughout the development process."
+                </p>
+                <p className="text-gray-300 leading-relaxed">
+                  "Every project is a partnership. We work closely with our clients to provide suitable IT solutions that fit their culture, budget, and timeline while ensuring long-term success and sustainability."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Collaboration Process Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Collaboration Process</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              A simple, step-by-step approach from requirement gathering to project completion
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { step: "01", title: "Discovery & Analysis", description: "Understanding your requirements, challenges, and goals", icon: <MessageSquare className="h-8 w-8" /> },
+              { step: "02", title: "Planning & Design", description: "Creating detailed project roadmap and system architecture", icon: <Target className="h-8 w-8" /> },
+              { step: "03", title: "Development & Testing", description: "Agile development with continuous testing and quality assurance", icon: <Code className="h-8 w-8" /> },
+              { step: "04", title: "Deployment & Support", description: "Smooth deployment with ongoing maintenance and support", icon: <CheckCircle className="h-8 w-8" /> }
+            ].map((process, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-600 text-center hover:bg-slate-800 transition-all duration-300">
+                <CardHeader>
+                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                    {process.icon}
+                  </div>
+                  <div className="text-4xl font-bold text-blue-400 mb-2">{process.step}</div>
+                  <CardTitle className="text-white text-xl">{process.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300">{process.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
-      <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Projects</h2>
@@ -654,8 +964,45 @@ const Index = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-300">
+              Common questions about our services, processes, and support
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-600">
+                <CardHeader 
+                  className="cursor-pointer hover:bg-slate-700/50 transition-colors"
+                  onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
+                >
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-white text-lg">{faq.question}</CardTitle>
+                    {expandedFAQ === index ? (
+                      <ChevronUp className="h-5 w-5 text-blue-400" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-blue-400" />
+                    )}
+                  </div>
+                </CardHeader>
+                {expandedFAQ === index && (
+                  <CardContent>
+                    <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
-      <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+      <section id="about" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -704,7 +1051,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Get In Touch</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">

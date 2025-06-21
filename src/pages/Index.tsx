@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -129,20 +128,23 @@ const Index = () => {
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-naya-blue-200 mb-6">
               <Sparkles className="h-4 w-4 text-naya-orange-500 mr-2" />
-              <span className="text-sm font-medium text-naya-blue-700">Leading IT Solutions Provider</span>
+              <span className="text-sm font-medium text-naya-blue-700">NayaCode - Your Technology Partner</span>
             </div>
             <h1 className="text-6xl font-bold mb-6 animate-slide-up">
-              <span className="text-gradient">{t('home.title')}</span>
+              <span className="text-gradient">Innovative IT Solutions</span>
+              <br />
+              <span className="text-gray-900">for Digital Transformation</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in">
-              {t('home.subtitle')}
+              NayaCode delivers cutting-edge technology solutions for government and private sector, 
+              empowering organizations with modern, scalable, and secure systems.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
               <Button asChild size="lg" className="text-lg px-8 bg-gradient-primary hover:shadow-hover transition-all duration-300">
-                <Link to="/contact">{t('home.cta')}</Link>
+                <Link to="/contact">Start Your Project</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-8 border-2 border-naya-blue-300 hover:bg-naya-blue-50">
-                <Link to="/about">{t('home.learn_more')}</Link>
+                <Link to="/about">Learn More</Link>
               </Button>
             </div>
           </div>
@@ -153,9 +155,14 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+            {[
+              { number: '500+', label: 'Projects Completed', icon: Target },
+              { number: '15+', label: 'Years Experience', icon: Award },
+              { number: '200+', label: 'Happy Clients', icon: Users },
+              { number: '99%', label: 'Success Rate', icon: TrendingUp }
+            ].map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${features[index % features.length].gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${['from-naya-blue-500 to-naya-blue-600', 'from-naya-orange-500 to-naya-orange-600', 'from-purple-500 to-purple-600', 'from-emerald-500 to-emerald-600'][index]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <stat.icon className="h-8 w-8 text-white" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
@@ -170,14 +177,51 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">Why Choose Us</h2>
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">Why Choose NayaCode</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We deliver comprehensive IT solutions with cutting-edge technology and expert teams
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+            {[
+              {
+                icon: Building2,
+                title: 'Government Solutions',
+                description: 'Specialized e-governance and public service solutions',
+                gradient: 'from-naya-blue-500 to-naya-blue-600'
+              },
+              {
+                icon: Users,
+                title: 'Private Sector',
+                description: 'Enterprise solutions for businesses of all sizes',
+                gradient: 'from-naya-orange-500 to-naya-orange-600'
+              },
+              {
+                icon: Code,
+                title: 'Custom Development',
+                description: 'Tailored solutions built to your exact requirements',
+                gradient: 'from-purple-500 to-purple-600'
+              },
+              {
+                icon: Database,
+                title: 'Database Management',
+                description: 'Robust data management and analytics solutions',
+                gradient: 'from-emerald-500 to-emerald-600'
+              },
+              {
+                icon: Shield,
+                title: 'Security First',
+                description: 'Enterprise-grade security and compliance',
+                gradient: 'from-red-500 to-red-600'
+              },
+              {
+                icon: Globe,
+                title: '24/7 Support',
+                description: 'Round-the-clock technical support and maintenance',
+                gradient: 'from-cyan-500 to-cyan-600'
+              }
+            ].map((feature, index) => (
               <Card key={index} className="h-full border-0 shadow-card hover:shadow-hover transition-all duration-300 group bg-white/80 backdrop-blur-sm">
                 <CardHeader className="text-center pb-4">
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
@@ -314,9 +358,9 @@ const Index = () => {
       <section className="py-20 bg-gradient-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-hero-pattern opacity-20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-4 text-white">Ready to Start Your Project?</h2>
+          <h2 className="text-4xl font-bold mb-4 text-white">Ready to Start Your Project with NayaCode?</h2>
           <p className="text-xl mb-8 text-white/90 max-w-3xl mx-auto">
-            Let's discuss how we can help transform your business with our IT solutions
+            Let's discuss how we can help transform your business with our innovative IT solutions
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="text-lg px-8 bg-white text-naya-blue-700 hover:bg-gray-100">

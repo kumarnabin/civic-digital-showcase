@@ -7,11 +7,11 @@ const Footer = () => {
   const { t } = useLanguage();
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Facebook, href: 'https://facebook.com/nayacode', label: 'Facebook' },
+    { icon: Twitter, href: 'https://twitter.com/nayacode', label: 'Twitter' },
+    { icon: Linkedin, href: 'https://linkedin.com/company/nayacode', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://instagram.com/nayacode', label: 'Instagram' },
+    { icon: Github, href: 'https://github.com/nayacode', label: 'GitHub' },
   ];
 
   return (
@@ -19,9 +19,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-bold text-lg mb-4">IT Solutions</h3>
+            <h3 className="font-bold text-lg mb-4 text-gradient">NayaCode</h3>
             <p className="text-muted-foreground">
-              Professional IT solutions for government and private sector projects.
+              Professional IT solutions for government and private sector projects with modern technology stack.
             </p>
           </div>
           
@@ -31,7 +31,7 @@ const Footer = () => {
               <li>Government Solutions</li>
               <li>Private Sector Projects</li>
               <li>System Integration</li>
-              <li>Consulting</li>
+              <li>Custom Development</li>
             </ul>
           </div>
           
@@ -64,7 +64,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>{t('footer.copyright')}</p>
+          <p>© 2024 NayaCode. All rights reserved.</p>
         </div>
       </div>
     </footer>

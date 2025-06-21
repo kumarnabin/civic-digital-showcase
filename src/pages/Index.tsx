@@ -16,11 +16,87 @@ import {
   Sparkles,
   Target,
   Award,
-  TrendingUp
+  TrendingUp,
+  PlayCircle,
+  Calendar,
+  GraduationCap,
+  Trophy,
+  Star,
+  Camera
 } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Index = () => {
   const { t } = useLanguage();
+
+  const carouselSlides = [
+    {
+      id: 'introduction',
+      title: 'Welcome to NayaCode',
+      subtitle: 'Your Trusted Technology Partner',
+      description: 'Transforming businesses with innovative IT solutions for over 15 years. We specialize in government and private sector digital transformation.',
+      icon: Sparkles,
+      gradient: 'from-naya-blue-500 to-naya-blue-600',
+      bgImage: 'photo-1649972904349-6e44c42644a7',
+      action: { text: 'Learn More', link: '/about' }
+    },
+    {
+      id: 'success-gallery',
+      title: 'Success Stories',
+      subtitle: '500+ Projects Delivered',
+      description: 'From government e-governance systems to enterprise solutions, our portfolio showcases successful digital transformations across various sectors.',
+      icon: Camera,
+      gradient: 'from-emerald-500 to-emerald-600',
+      bgImage: 'photo-1488590528505-98d2b5aba04b',
+      action: { text: 'View Projects', link: '/projects' }
+    },
+    {
+      id: 'awards',
+      title: 'Industry Recognition',
+      subtitle: 'Excellence in Technology',
+      description: 'Recognized for outstanding contributions to digital transformation with multiple awards for innovation, quality, and customer satisfaction.',
+      icon: Trophy,
+      gradient: 'from-naya-orange-500 to-naya-orange-600',
+      bgImage: 'photo-1581091226825-a6a2a5aee158',
+      action: { text: 'Our Achievements', link: '/about' }
+    },
+    {
+      id: 'training',
+      title: 'Professional Training',
+      subtitle: 'Empower Your Team',
+      description: 'Comprehensive training programs on modern technologies, system administration, and digital literacy for government and corporate teams.',
+      icon: GraduationCap,
+      gradient: 'from-purple-500 to-purple-600',
+      bgImage: 'photo-1486312338219-ce68d2c6f44d',
+      action: { text: 'Training Programs', link: '/services' }
+    },
+    {
+      id: 'demo',
+      title: 'Live Demonstrations',
+      subtitle: 'See Solutions in Action',
+      description: 'Experience our solutions through interactive demos. See how our systems can streamline your operations and improve efficiency.',
+      icon: PlayCircle,
+      gradient: 'from-cyan-500 to-cyan-600',
+      bgImage: 'photo-1605810230434-7631ac76ec81',
+      action: { text: 'Book Demo', link: '/contact' }
+    },
+    {
+      id: 'meeting',
+      title: 'Schedule Consultation',
+      subtitle: 'Let\'s Discuss Your Needs',
+      description: 'Free consultation to understand your requirements and propose the best technology solutions for your organization.',
+      icon: Calendar,
+      gradient: 'from-pink-500 to-pink-600',
+      bgImage: 'photo-1649972904349-6e44c42644a7',
+      action: { text: 'Book Meeting', link: '/contact' }
+    }
+  ];
 
   const projects = [
     {
@@ -148,6 +224,63 @@ const Index = () => {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Modern Carousel Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">Discover NayaCode</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Explore our journey, achievements, and comprehensive services through this interactive showcase
+            </p>
+          </div>
+          
+          <Carousel className="w-full max-w-6xl mx-auto" opts={{ align: "start", loop: true }}>
+            <CarouselContent className="-ml-1">
+              {carouselSlides.map((slide) => (
+                <CarouselItem key={slide.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <Card className="h-full border-0 shadow-card hover:shadow-hover transition-all duration-500 group overflow-hidden">
+                      <div className="relative h-48 overflow-hidden">
+                        <div 
+                          className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90`}
+                          style={{
+                            backgroundImage: `url(https://images.unsplash.com/${slide.bgImage}?auto=format&fit=crop&w=600&q=80)`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            backgroundBlendMode: 'overlay'
+                          }}
+                        ></div>
+                        <div className="absolute inset-0 bg-black/20"></div>
+                        <div className="relative z-10 p-6 h-full flex flex-col justify-between">
+                          <div className={`w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                            <slide.icon className="h-6 w-6 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-white mb-1">{slide.title}</h3>
+                            <p className="text-white/90 text-sm font-medium">{slide.subtitle}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <CardContent className="p-6">
+                        <p className="text-gray-600 mb-4 text-sm leading-relaxed">{slide.description}</p>
+                        <Button asChild variant="ghost" className="w-full group-hover:bg-gray-50 transition-colors">
+                          <Link to={slide.action.link} className="flex items-center justify-center">
+                            {slide.action.text}
+                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </section>
 

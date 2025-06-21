@@ -43,6 +43,7 @@ const Projects = () => {
         : 'Document Registration & Tracking System',
       category: 'government',
       icon: FileText,
+      screenshot: 'photo-1454165804606-c3d57bc86b40',
       technologies: ['Java Spring Boot', 'PostgreSQL', 'Angular'],
       features: [
         language === 'ne' ? 'कागजात दर्ता (आगमन/बहिर्गमन)' : 'Document registration (incoming/outgoing)',
@@ -61,6 +62,7 @@ const Projects = () => {
         : 'Supplier registration and approval system',
       category: 'government',
       icon: Building2,
+      screenshot: 'photo-1507003211169-0a1dd7228f2d',
       technologies: ['C# .NET Core', 'SQL Server', 'React'],
       features: [
         language === 'ne' ? 'आपूर्तिकर्ता दर्ता, मूल्याङ्कन र अनुमोदन' : 'Supplier registration, evaluation, and approval',
@@ -115,6 +117,7 @@ const Projects = () => {
         : 'Full loan application and repayment tracking',
       category: 'private',
       icon: CreditCard,
+      screenshot: 'photo-1554224154-26032ffc0d07',
       technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
       features: [
         language === 'ne' ? 'ऋण आवेदन, अनुमोदन, वितरण' : 'Loan application, approval, disbursement',
@@ -205,6 +208,7 @@ const Projects = () => {
         : 'Online product and payment solution',
       category: 'private',
       icon: ShoppingCart,
+      screenshot: 'photo-1556742049-0cfed4f6a45d',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       features: [
         language === 'ne' ? 'उत्पादन सूची, कार्त, चेकआउट' : 'Product listing, cart, checkout',
@@ -421,23 +425,32 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <Card key={project.id} className="h-full group hover:shadow-lg transition-all duration-300">
+            <Card key={project.id} className="h-full group hover:shadow-lg transition-all duration-300 overflow-hidden">
+              {/* Project Screenshot */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={`https://images.unsplash.com/${project.screenshot}?w=400&h=200&fit=crop`}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+                <Badge 
+                  className={`absolute top-4 left-4 ${project.category === "government" ? "bg-blue-600" : "bg-purple-600"}`}
+                >
+                  {project.category === "government" 
+                    ? (language === 'ne' ? 'सरकारी' : 'Government')
+                    : project.category === "private"
+                    ? (language === 'ne' ? 'निजी' : 'Private') 
+                    : (language === 'ne' ? 'दुवै' : 'Both')
+                  }
+                </Badge>
+              </div>
+
               <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <project.icon className="h-8 w-8 text-primary" />
-                  <Badge 
-                    variant={project.category === 'government' ? 'default' : 
-                            project.category === 'private' ? 'secondary' : 'outline'}
-                  >
-                    {project.category === 'government' 
-                      ? (language === 'ne' ? 'सरकारी' : 'Government')
-                      : project.category === 'private'
-                      ? (language === 'ne' ? 'निजी' : 'Private') 
-                      : (language === 'ne' ? 'दुवै' : 'Both')
-                    }
-                  </Badge>
+                <div className="flex items-center justify-between mb-2">
+                  <project.icon className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                <CardTitle className="text-lg group-hover:text-primary transition-colors">
                   {project.title}
                 </CardTitle>
                 <CardDescription className="text-sm">
@@ -455,12 +468,6 @@ const Projects = () => {
                         <li key={index}>• {feature}</li>
                       ))}
                     </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2 text-sm">
-                      {language === 'ne' ? 'कार्यप्रवाह:' : 'Workflow:'}
-                    </h4>
-                    <p className="text-xs text-muted-foreground">{project.workflow}</p>
                   </div>
                   <div className="flex flex-wrap gap-1">
                     {project.technologies.slice(0, 2).map((tech, index) => (

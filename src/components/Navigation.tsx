@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -22,6 +23,8 @@ const Navigation = () => {
     { path: '/services', label: t('nav.services') },
     { path: '/projects', label: t('nav.projects') },
     { path: '/blog', label: t('nav.blog') },
+    { path: '/faq', label: language === 'ne' ? 'प्रश्नोत्तर' : 'FAQ' },
+    { path: '/support', label: language === 'ne' ? 'सहायता' : 'Support' },
     { path: '/contact', label: t('nav.contact') },
   ];
 

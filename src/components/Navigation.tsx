@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -32,8 +31,13 @@ const Navigation = () => {
     <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-bold text-xl text-primary">
-            IT Solutions
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src="https://nayacode.com/images/Image-2025033006063823.Naya1.png" 
+              alt="NayaCode Logo" 
+              className="h-10 w-auto"
+            />
+            <span className="font-bold text-xl text-primary">NayaCode</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-6">

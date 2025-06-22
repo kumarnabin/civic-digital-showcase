@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -197,26 +198,36 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Full Width */}
+      {/* Hero Section - Full Width with Enhanced Animations */}
       <section className="relative overflow-hidden bg-gradient-to-br from-naya-blue-50 via-white to-naya-orange-50 py-20 w-full">
-        <div className="absolute inset-0 bg-hero-pattern opacity-40"></div>
+        <div className="absolute inset-0 bg-hero-pattern opacity-40 animate-pulse"></div>
+        
+        {/* Floating Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-naya-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_6s_ease-in-out_infinite]"></div>
+          <div className="absolute top-40 right-20 w-40 h-40 bg-naya-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_8s_ease-in-out_infinite_reverse]"></div>
+          <div className="absolute bottom-32 left-1/3 w-36 h-36 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_7s_ease-in-out_infinite]"></div>
+        </div>
+
         <div className="w-full px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-naya-blue-200 mb-6">
-              <Sparkles className="h-4 w-4 text-naya-orange-500 mr-2" />
-              <span className="text-sm font-medium text-naya-blue-700">NayaCode - Your Technology Partner</span>
-            </div>
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-naya-blue-600 to-naya-orange-500 animate-fade-in">
+              Innovative IT Solutions
+            </h1>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-gray-700 animate-fade-in animation-delay-200">
+              for Digital Transformation
+            </h2>
             
-            {/* Full Width Slider */}
-            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-8">
+            {/* Full Width Slider with Enhanced Effects */}
+            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-8 animate-fade-in animation-delay-400">
               <Carousel className="w-full" opts={{ align: "center", loop: true }}>
                 <CarouselContent className="-ml-1">
-                  {carouselSlides.map((slide) => (
+                  {carouselSlides.map((slide, index) => (
                     <CarouselItem key={slide.id} className="pl-1 basis-full">
                       <div className="p-1">
-                        <div className="relative h-[400px] overflow-hidden rounded-2xl">
+                        <div className="relative h-[450px] overflow-hidden rounded-2xl group hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02]">
                           <div 
-                            className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90`}
+                            className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-opacity duration-500 group-hover:opacity-95`}
                             style={{
                               backgroundImage: `url(https://images.unsplash.com/${slide.bgImage}?auto=format&fit=crop&w=1920&q=80)`,
                               backgroundSize: 'cover',
@@ -224,25 +235,33 @@ const Index = () => {
                               backgroundBlendMode: 'overlay'
                             }}
                           ></div>
-                          <div className="absolute inset-0 bg-black/20"></div>
+                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
+                          
+                          {/* Animated particles */}
+                          <div className="absolute inset-0 opacity-20">
+                            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-bounce" style={{animationDelay: '0s'}}></div>
+                            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
+                            <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{animationDelay: '2s'}}></div>
+                          </div>
+                          
                           <div className="relative z-10 h-full flex items-center justify-center">
-                            <div className="text-center max-w-4xl mx-auto px-8">
-                              <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center`}>
+                            <div className="text-center max-w-4xl mx-auto px-8 transform transition-transform duration-500 group-hover:scale-105">
+                              <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110`}>
                                 <slide.icon className="h-10 w-10 text-white" />
                               </div>
-                              <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
+                              <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white transform transition-all duration-500 group-hover:text-shadow-lg">
                                 {slide.title}
                               </h1>
-                              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90">
+                              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90 transform transition-all duration-300">
                                 {slide.subtitle}
                               </h2>
-                              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+                              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed transform transition-all duration-300">
                                 {slide.description}
                               </p>
-                              <Button asChild size="lg" className="text-lg px-8 bg-white text-gray-900 hover:bg-gray-100 transition-all duration-300">
+                              <Button asChild size="lg" className="text-lg px-8 bg-white text-gray-900 hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                                 <Link to={slide.action.link} className="flex items-center">
                                   {slide.action.text}
-                                  <ArrowRight className="ml-2 h-5 w-5" />
+                                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                                 </Link>
                               </Button>
                             </div>
@@ -252,42 +271,33 @@ const Index = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-4 bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30" />
-                <CarouselNext className="right-4 bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30" />
+                <CarouselPrevious className="left-4 bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 hover:scale-110 transition-all duration-300" />
+                <CarouselNext className="right-4 bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 hover:scale-110 transition-all duration-300" />
               </Carousel>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-              <Button asChild size="lg" className="text-lg px-8 bg-gradient-primary hover:shadow-hover transition-all duration-300">
-                <Link to="/contact">Start Your Project</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-lg px-8 border-2 border-naya-blue-300 hover:bg-naya-blue-50">
-                <Link to="/about">Learn More</Link>
-              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Modern Carousel Section */}
+      {/* Modern Carousel Section with Enhanced Animations */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">Discover NayaCode</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Explore our journey, achievements, and comprehensive services through this interactive showcase
             </p>
           </div>
           
-          <Carousel className="w-full max-w-6xl mx-auto" opts={{ align: "start", loop: true }}>
+          <Carousel className="w-full max-w-6xl mx-auto animate-fade-in animation-delay-200" opts={{ align: "start", loop: true }}>
             <CarouselContent className="-ml-1">
-              {carouselSlides.map((slide) => (
+              {carouselSlides.map((slide, index) => (
                 <CarouselItem key={slide.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Card className="h-full border-0 shadow-card hover:shadow-hover transition-all duration-500 group overflow-hidden">
+                    <Card className="h-full border-0 shadow-card hover:shadow-hover transition-all duration-500 group overflow-hidden transform hover:scale-105 hover:-translate-y-2">
                       <div className="relative h-48 overflow-hidden">
                         <div 
-                          className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90`}
+                          className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-opacity duration-500 group-hover:opacity-95`}
                           style={{
                             backgroundImage: `url(https://images.unsplash.com/${slide.bgImage}?auto=format&fit=crop&w=600&q=80)`,
                             backgroundSize: 'cover',
@@ -295,12 +305,12 @@ const Index = () => {
                             backgroundBlendMode: 'overlay'
                           }}
                         ></div>
-                        <div className="absolute inset-0 bg-black/20"></div>
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
                         <div className="relative z-10 p-6 h-full flex flex-col justify-between">
-                          <div className={`w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <div className={`w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
                             <slide.icon className="h-6 w-6 text-white" />
                           </div>
-                          <div>
+                          <div className="transform transition-transform duration-300 group-hover:translate-y-[-4px]">
                             <h3 className="text-xl font-bold text-white mb-1">{slide.title}</h3>
                             <p className="text-white/90 text-sm font-medium">{slide.subtitle}</p>
                           </div>
@@ -308,10 +318,10 @@ const Index = () => {
                       </div>
                       <CardContent className="p-6">
                         <p className="text-gray-600 mb-4 text-sm leading-relaxed">{slide.description}</p>
-                        <Button asChild variant="ghost" className="w-full group-hover:bg-gray-50 transition-colors">
+                        <Button asChild variant="ghost" className="w-full group-hover:bg-gray-50 transition-all duration-300 hover:scale-105">
                           <Link to={slide.action.link} className="flex items-center justify-center">
                             {slide.action.text}
-                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                           </Link>
                         </Button>
                       </CardContent>
@@ -320,13 +330,13 @@ const Index = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
+            <CarouselPrevious className="hidden md:flex hover:scale-110 transition-transform duration-300" />
+            <CarouselNext className="hidden md:flex hover:scale-110 transition-transform duration-300" />
           </Carousel>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section with Enhanced Animations */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -336,22 +346,22 @@ const Index = () => {
               { number: '200+', label: 'Happy Clients', icon: Users },
               { number: '99%', label: 'Success Rate', icon: TrendingUp }
             ].map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${['from-naya-blue-500 to-naya-blue-600', 'from-naya-orange-500 to-naya-orange-600', 'from-purple-500 to-purple-600', 'from-emerald-500 to-emerald-600'][index]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+              <div key={index} className="text-center group animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${['from-naya-blue-500 to-naya-blue-600', 'from-naya-orange-500 to-naya-orange-600', 'from-purple-500 to-purple-600', 'from-emerald-500 to-emerald-600'][index]} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl`}>
                   <stat.icon className="h-8 w-8 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
-                <p className="text-gray-600">{stat.label}</p>
+                <div className="text-3xl font-bold text-gray-900 mb-2 group-hover:scale-110 transition-transform duration-300">{stat.number}</div>
+                <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section with Enhanced Animations */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">Why Choose NayaCode</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We deliver comprehensive IT solutions with cutting-edge technology and expert teams
@@ -397,13 +407,13 @@ const Index = () => {
                 gradient: 'from-cyan-500 to-cyan-600'
               }
             ].map((feature, index) => (
-              <Card key={index} className="h-full border-0 shadow-card hover:shadow-hover transition-all duration-300 group bg-white/80 backdrop-blur-sm">
+              <Card key={index} className="h-full border-0 shadow-card hover:shadow-hover transition-all duration-500 group bg-white/80 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader className="text-center pb-4">
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl`}>
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-gray-900">{feature.title}</CardTitle>
-                  <CardDescription className="text-base text-gray-600">{feature.description}</CardDescription>
+                  <CardTitle className="text-xl text-gray-900 group-hover:text-gray-700 transition-colors duration-300">{feature.title}</CardTitle>
+                  <CardDescription className="text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{feature.description}</CardDescription>
                 </CardHeader>
               </Card>
             ))}

@@ -197,24 +197,66 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-naya-blue-50 via-white to-naya-orange-50 py-20">
+      {/* Hero Section - Full Width */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-naya-blue-50 via-white to-naya-orange-50 py-20 w-full">
         <div className="absolute inset-0 bg-hero-pattern opacity-40"></div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="w-full px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-naya-blue-200 mb-6">
               <Sparkles className="h-4 w-4 text-naya-orange-500 mr-2" />
               <span className="text-sm font-medium text-naya-blue-700">NayaCode - Your Technology Partner</span>
             </div>
-            <h1 className="text-6xl font-bold mb-6 animate-slide-up">
-              <span className="text-gradient">Innovative IT Solutions</span>
-              <br />
-              <span className="text-gray-900">for Digital Transformation</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in">
-              NayaCode delivers cutting-edge technology solutions for government and private sector, 
-              empowering organizations with modern, scalable, and secure systems.
-            </p>
+            
+            {/* Full Width Slider */}
+            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-8">
+              <Carousel className="w-full" opts={{ align: "center", loop: true }}>
+                <CarouselContent className="-ml-1">
+                  {carouselSlides.map((slide) => (
+                    <CarouselItem key={slide.id} className="pl-1 basis-full">
+                      <div className="p-1">
+                        <div className="relative h-[400px] overflow-hidden rounded-2xl">
+                          <div 
+                            className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90`}
+                            style={{
+                              backgroundImage: `url(https://images.unsplash.com/${slide.bgImage}?auto=format&fit=crop&w=1920&q=80)`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center',
+                              backgroundBlendMode: 'overlay'
+                            }}
+                          ></div>
+                          <div className="absolute inset-0 bg-black/20"></div>
+                          <div className="relative z-10 h-full flex items-center justify-center">
+                            <div className="text-center max-w-4xl mx-auto px-8">
+                              <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center`}>
+                                <slide.icon className="h-10 w-10 text-white" />
+                              </div>
+                              <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
+                                {slide.title}
+                              </h1>
+                              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90">
+                                {slide.subtitle}
+                              </h2>
+                              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+                                {slide.description}
+                              </p>
+                              <Button asChild size="lg" className="text-lg px-8 bg-white text-gray-900 hover:bg-gray-100 transition-all duration-300">
+                                <Link to={slide.action.link} className="flex items-center">
+                                  {slide.action.text}
+                                  <ArrowRight className="ml-2 h-5 w-5" />
+                                </Link>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30" />
+                <CarouselNext className="right-4 bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30" />
+              </Carousel>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
               <Button asChild size="lg" className="text-lg px-8 bg-gradient-primary hover:shadow-hover transition-all duration-300">
                 <Link to="/contact">Start Your Project</Link>

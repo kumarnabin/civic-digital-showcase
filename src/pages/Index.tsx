@@ -607,10 +607,10 @@ const Index = () => {
             Let's discuss how we can help transform your business with our innovative IT solutions
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="text-lg px-8 bg-white text-naya-blue-700 hover:bg-gray-100 border-2 border-white">
+            <Button asChild size="lg" variant="secondary" className="text-lg px-8 bg-white text-naya-blue-700 hover:bg-gray-100 border-2 border-white hover:border-gray-200 font-semibold">
               <Link to="/contact">Get Started Today</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-lg px-8 border-2 border-white text-white hover:bg-white/10 hover:border-white/80">
+            <Button asChild size="lg" className="text-lg px-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-naya-blue-700 transition-all duration-300 font-semibold">
               <Link to="/services">Explore Services</Link>
             </Button>
           </div>

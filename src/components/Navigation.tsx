@@ -38,9 +38,12 @@ const Navigation = () => {
             <img 
               src="https://nayacode.com/images/Image-2025033006063823.Naya1.png" 
               alt="NayaCode Logo" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
-            <span className="font-bold text-xl text-primary">NayaCode</span>
+            <div className="flex flex-col">
+              <span className="font-bold text-xl text-gradient">NayaCode</span>
+              <span className="text-xs text-muted-foreground">Your Technology Partner</span>
+            </div>
           </Link>
           
           <div className="hidden md:flex items-center space-x-6">

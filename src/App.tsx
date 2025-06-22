@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -48,6 +49,7 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
+              <Footer />
               <ChatWidget />
             </div>
           </BrowserRouter>

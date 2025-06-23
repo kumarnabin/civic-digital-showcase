@@ -31,18 +31,16 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="glass-effect border-b border-white/20 sticky top-0 z-50">
+    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative overflow-hidden rounded-xl">
-              <img 
-                src="https://nayacode.com/images/Image-2025033006063823.Naya1.png" 
-                alt="NayaCode Logo" 
-                className="h-12 w-auto transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src="https://nayacode.com/images/Image-2025033006063823.Naya1.png" 
+              alt="NayaCode Logo" 
+              className="h-10 w-auto"
+            />
+            <span className="font-bold text-xl text-primary">NayaCode</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-6">
@@ -50,8 +48,8 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm font-medium transition-all duration-300 hover:text-white hover:scale-105 ${
-                  isActive(item.path) ? 'text-white font-semibold' : 'text-white/80'
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  isActive(item.path) ? 'text-primary' : 'text-muted-foreground'
                 }`}
               >
                 {item.label}
@@ -63,15 +61,15 @@ const Navigation = () => {
             {/* Language Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="glass-effect border border-white/20 text-white hover:bg-white/20">
+                <Button variant="ghost" size="icon">
                   <Globe className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="glass-effect border border-white/20">
-                <DropdownMenuItem onClick={() => setLanguage('en')} className="text-white hover:bg-white/20">
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => setLanguage('en')}>
                   English
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage('ne')} className="text-white hover:bg-white/20">
+                <DropdownMenuItem onClick={() => setLanguage('ne')}>
                   नेपाली
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -80,22 +78,22 @@ const Navigation = () => {
             {/* Theme Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="glass-effect border border-white/20 text-white hover:bg-white/20">
+                <Button variant="ghost" size="icon">
                   {theme === 'light' && <Sun className="h-5 w-5" />}
                   {theme === 'dark' && <Moon className="h-5 w-5" />}
                   {theme === 'system' && <Monitor className="h-5 w-5" />}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="glass-effect border border-white/20">
-                <DropdownMenuItem onClick={() => setTheme('light')} className="text-white hover:bg-white/20">
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => setTheme('light')}>
                   <Sun className="mr-2 h-4 w-4" />
                   Light
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme('dark')} className="text-white hover:bg-white/20">
+                <DropdownMenuItem onClick={() => setTheme('dark')}>
                   <Moon className="mr-2 h-4 w-4" />
                   Dark
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme('system')} className="text-white hover:bg-white/20">
+                <DropdownMenuItem onClick={() => setTheme('system')}>
                   <Monitor className="mr-2 h-4 w-4" />
                   System
                 </DropdownMenuItem>

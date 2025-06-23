@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -22,7 +22,11 @@ import {
   GraduationCap,
   Trophy,
   Star,
-  Camera
+  Camera,
+  ChevronLeft,
+  ChevronRight,
+  Smartphone,
+  Palette
 } from 'lucide-react';
 import {
   Carousel,
@@ -107,7 +111,9 @@ const Index = () => {
       description: 'Official document registration and correspondence tracking system.',
       category: 'Government',
       technologies: ['Java Spring Boot', 'PostgreSQL', 'React'],
-      gradient: 'from-naya-blue-500 to-naya-blue-600'
+      gradient: 'from-naya-blue-500 to-naya-blue-600',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      tags: ['Government', 'Document Management', 'Web Application']
     },
     {
       id: 'vendor-enlisting',
@@ -115,7 +121,9 @@ const Index = () => {
       description: 'Supplier registration and approval system for procurement processes.',
       category: 'Government',
       technologies: ['PHP Laravel', 'MySQL', 'Vue.js'],
-      gradient: 'from-naya-orange-500 to-naya-orange-600'
+      gradient: 'from-naya-orange-500 to-naya-orange-600',
+      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
+      tags: ['Government', 'Procurement', 'Vendor Management']
     },
     {
       id: 'loan-management',
@@ -123,7 +131,9 @@ const Index = () => {
       description: 'Full loan application, approval, and repayment tracking system.',
       category: 'Private',
       technologies: ['Python Django', 'PostgreSQL', 'Angular'],
-      gradient: 'from-purple-500 to-purple-600'
+      gradient: 'from-purple-500 to-purple-600',
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      tags: ['Finance', 'Banking', 'Loan Processing']
     },
     {
       id: 'erp-system',
@@ -131,7 +141,9 @@ const Index = () => {
       description: 'Full enterprise resource planning solution for businesses and local governments.',
       category: 'Both',
       technologies: ['Java Spring Boot', 'SQL Server', 'React'],
-      gradient: 'from-emerald-500 to-emerald-600'
+      gradient: 'from-emerald-500 to-emerald-600',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80',
+      tags: ['ERP', 'Enterprise', 'Management']
     },
     {
       id: 'e-commerce',
@@ -139,7 +151,9 @@ const Index = () => {
       description: 'Online product management, order processing, and payment solution.',
       category: 'Private',
       technologies: ['Python FastAPI', 'PostgreSQL', 'Next.js'],
-      gradient: 'from-pink-500 to-pink-600'
+      gradient: 'from-pink-500 to-pink-600',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+      tags: ['E-commerce', 'Online Shopping', 'Payment Gateway']
     },
     {
       id: 'school-management',
@@ -147,7 +161,9 @@ const Index = () => {
       description: 'Comprehensive school administration, finance, and academic system.',
       category: 'Private',
       technologies: ['Java Spring Boot', 'MySQL', 'React'],
-      gradient: 'from-indigo-500 to-indigo-600'
+      gradient: 'from-indigo-500 to-indigo-600',
+      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      tags: ['Education', 'School Management', 'Academic System']
     }
   ];
 
@@ -209,12 +225,12 @@ const Index = () => {
       description: 'PostgreSQL, MySQL, SQL Server, MongoDB'
     },
     {
-      icon: Smartphone,
+      icon: Globe,
       name: 'Frontend Frameworks',
       description: 'React, Vue.js, Angular, Next.js'
     },
     {
-      icon: Palette,
+      icon: Shield,
       name: 'Design Tools',
       description: 'Adobe XD, Figma, Sketch'
     }

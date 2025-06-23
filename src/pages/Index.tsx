@@ -441,19 +441,22 @@ const Index = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6">
-            {techStack.map((tech, index) => (
-              <div
-                key={index}
-                className="glass-effect border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all duration-300 hover:scale-105 group"
-              >
-                <div className="text-center">
-                  <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                    {tech.icon}
+            {techStack.map((tech, index) => {
+              const IconComponent = tech.icon;
+              return (
+                <div
+                  key={index}
+                  className="glass-effect border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all duration-300 hover:scale-105 group"
+                >
+                  <div className="text-center">
+                    <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300 text-white">
+                      <IconComponent className="w-10 h-10 mx-auto" />
+                    </div>
+                    <div className="text-white font-semibold">{tech.name}</div>
                   </div>
-                  <div className="text-white font-semibold">{tech.name}</div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

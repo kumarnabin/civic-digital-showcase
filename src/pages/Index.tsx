@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -23,7 +23,9 @@ import {
   GraduationCap,
   Trophy,
   Star,
-  Camera
+  Camera,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import {
   Carousel,
@@ -106,7 +108,9 @@ const Index = () => {
       description: 'Official document registration and correspondence tracking system.',
       category: 'Government',
       technologies: ['Java Spring Boot', 'PostgreSQL', 'React'],
-      gradient: 'from-naya-blue-500 to-naya-blue-600'
+      gradient: 'from-naya-blue-500 to-naya-blue-600',
+      image: 'photo-1554224155-6726b3ff858f',
+      tags: ['Government', 'Document Management']
     },
     {
       id: 'vendor-enlisting',
@@ -114,7 +118,9 @@ const Index = () => {
       description: 'Supplier registration and approval system for procurement processes.',
       category: 'Government',
       technologies: ['PHP Laravel', 'MySQL', 'Vue.js'],
-      gradient: 'from-naya-orange-500 to-naya-orange-600'
+      gradient: 'from-naya-orange-500 to-naya-orange-600',
+      image: 'photo-1460925895917-afdab827c52f',
+      tags: ['Government', 'Procurement']
     },
     {
       id: 'loan-management',
@@ -122,7 +128,9 @@ const Index = () => {
       description: 'Full loan application, approval, and repayment tracking system.',
       category: 'Private',
       technologies: ['Python Django', 'PostgreSQL', 'Angular'],
-      gradient: 'from-purple-500 to-purple-600'
+      gradient: 'from-purple-500 to-purple-600',
+      image: 'photo-1554224154-26032ffc0d30',
+      tags: ['Finance', 'Private Sector']
     },
     {
       id: 'erp-system',
@@ -130,7 +138,9 @@ const Index = () => {
       description: 'Full enterprise resource planning solution for businesses and local governments.',
       category: 'Both',
       technologies: ['Java Spring Boot', 'SQL Server', 'React'],
-      gradient: 'from-emerald-500 to-emerald-600'
+      gradient: 'from-emerald-500 to-emerald-600',
+      image: 'photo-1551288049-bebda4e38f71',
+      tags: ['ERP', 'Enterprise']
     },
     {
       id: 'e-commerce',
@@ -138,7 +148,9 @@ const Index = () => {
       description: 'Online product management, order processing, and payment solution.',
       category: 'Private',
       technologies: ['Python FastAPI', 'PostgreSQL', 'Next.js'],
-      gradient: 'from-pink-500 to-pink-600'
+      gradient: 'from-pink-500 to-pink-600',
+      image: 'photo-1556742049-0cfed4f6a45d',
+      tags: ['E-commerce', 'Retail']
     },
     {
       id: 'school-management',
@@ -146,7 +158,9 @@ const Index = () => {
       description: 'Comprehensive school administration, finance, and academic system.',
       category: 'Private',
       technologies: ['Java Spring Boot', 'MySQL', 'React'],
-      gradient: 'from-indigo-500 to-indigo-600'
+      gradient: 'from-indigo-500 to-indigo-600',
+      image: 'photo-1523050854058-8df90110c9f1',
+      tags: ['Education', 'Management']
     }
   ];
 
@@ -194,6 +208,27 @@ const Index = () => {
     { number: '15+', label: 'Years Experience', icon: Award },
     { number: '200+', label: 'Happy Clients', icon: Users },
     { number: '99%', label: 'Success Rate', icon: TrendingUp }
+  ];
+
+  const techStack = [
+    {
+      category: 'Backend',
+      icon: Globe,
+      technologies: ['Java Spring Boot', 'Python Django', 'Python FastAPI', 'PHP Laravel'],
+      color: 'text-naya-blue-700'
+    },
+    {
+      category: 'Database',
+      icon: Database,
+      technologies: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB'],
+      color: 'text-naya-blue-700'
+    },
+    {
+      category: 'Frontend',
+      icon: Shield,
+      technologies: ['React', 'Vue.js', 'Angular', 'Next.js'],
+      color: 'text-naya-blue-700'
+    }
   ];
 
   return (
@@ -284,7 +319,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Modern Carousel Section with Enhanced Animations */}
+      {/* Modern Carousel Section with Enhanced Glass Effects */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">
@@ -304,7 +339,7 @@ const Index = () => {
               {carouselSlides.map((slide, index) => (
                 <CarouselItem key={slide.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Card className="h-full border-2 border-gray-200 shadow-card hover:shadow-hover hover:border-gray-300 transition-all duration-500 group overflow-hidden transform hover:scale-105 hover:-translate-y-2">
+                    <Card className="h-full border border-white/20 bg-white/70 backdrop-blur-md shadow-card hover:shadow-hover hover:bg-white/80 transition-all duration-500 group overflow-hidden transform hover:scale-105 hover:-translate-y-2">
                       <div className="relative h-48 overflow-hidden">
                         <div 
                           className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-all duration-500 group-hover:opacity-95 group-hover:scale-110`}
@@ -326,7 +361,7 @@ const Index = () => {
                           </div>
                         </div>
                       </div>
-                      <CardContent className="p-6">
+                      <CardContent className="p-6 bg-white/90 backdrop-blur-sm">
                         <p className="text-gray-600 mb-4 text-sm leading-relaxed">{slide.description}</p>
                         <Button asChild variant="ghost" className="w-full group-hover:bg-gray-50 transition-all duration-300 hover:scale-105 text-gray-900 hover:text-gray-700 border border-gray-200 hover:border-gray-300">
                           <Link to={slide.action.link} className="flex items-center justify-center">
@@ -340,8 +375,8 @@ const Index = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300" />
-            <CarouselNext className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300" />
+            <CarouselPrevious className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white/80 backdrop-blur-sm border-2 border-white/30 text-gray-700 hover:bg-white/90 hover:border-gray-300" />
+            <CarouselNext className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white/80 backdrop-blur-sm border-2 border-white/30 text-gray-700 hover:bg-white/90 hover:border-gray-300" />
           </Carousel>
         </div>
       </section>
@@ -350,12 +385,7 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { number: '500+', label: 'Projects Completed', icon: Target },
-              { number: '15+', label: 'Years Experience', icon: Award },
-              { number: '200+', label: 'Happy Clients', icon: Users },
-              { number: '99%', label: 'Success Rate', icon: TrendingUp }
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <div key={index} className="text-center group animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${['from-naya-blue-500 to-naya-blue-600', 'from-naya-orange-500 to-naya-orange-600', 'from-purple-500 to-purple-600', 'from-emerald-500 to-emerald-600'][index]} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl border-2 border-white`}>
                   <stat.icon className="h-8 w-8 text-white" />
@@ -368,7 +398,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section with Enhanced Animations */}
+      {/* Features Section with Enhanced Glass Effects */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
@@ -379,46 +409,9 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Building2,
-                title: 'Government Solutions',
-                description: 'Specialized e-governance and public service solutions',
-                gradient: 'from-naya-blue-500 to-naya-blue-600'
-              },
-              {
-                icon: Users,
-                title: 'Private Sector',
-                description: 'Enterprise solutions for businesses of all sizes',
-                gradient: 'from-naya-orange-500 to-naya-orange-600'
-              },
-              {
-                icon: Code,
-                title: 'Custom Development',
-                description: 'Tailored solutions built to your exact requirements',
-                gradient: 'from-purple-500 to-purple-600'
-              },
-              {
-                icon: Database,
-                title: 'Database Management',
-                description: 'Robust data management and analytics solutions',
-                gradient: 'from-emerald-500 to-emerald-600'
-              },
-              {
-                icon: Shield,
-                title: 'Security First',
-                description: 'Enterprise-grade security and compliance',
-                gradient: 'from-red-500 to-red-600'
-              },
-              {
-                icon: Globe,
-                title: '24/7 Support',
-                description: 'Round-the-clock technical support and maintenance',
-                gradient: 'from-cyan-500 to-cyan-600'
-              }
-            ].map((feature, index) => (
-              <Card key={index} className="h-full border-2 border-gray-200 shadow-card hover:shadow-hover hover:border-gray-300 transition-all duration-500 group bg-white/80 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                <CardHeader className="text-center pb-4">
+            {features.map((feature, index) => (
+              <Card key={index} className="h-full border border-white/30 bg-white/60 backdrop-blur-md shadow-card hover:shadow-hover hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                <CardHeader className="text-center pb-4 bg-white/80 backdrop-blur-sm">
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl border-2 border-white`}>
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
@@ -431,7 +424,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects with Glass Effects */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -442,63 +435,14 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                id: 'darta-chalani',
-                title: 'Darta Chalani',
-                description: 'Official document registration and correspondence tracking system.',
-                category: 'Government',
-                technologies: ['Java Spring Boot', 'PostgreSQL', 'React'],
-                gradient: 'from-naya-blue-500 to-naya-blue-600'
-              },
-              {
-                id: 'vendor-enlisting',
-                title: 'Vendor Enlisting',
-                description: 'Supplier registration and approval system for procurement processes.',
-                category: 'Government',
-                technologies: ['PHP Laravel', 'MySQL', 'Vue.js'],
-                gradient: 'from-naya-orange-500 to-naya-orange-600'
-              },
-              {
-                id: 'loan-management',
-                title: 'Loan Management',
-                description: 'Full loan application, approval, and repayment tracking system.',
-                category: 'Private',
-                technologies: ['Python Django', 'PostgreSQL', 'Angular'],
-                gradient: 'from-purple-500 to-purple-600'
-              },
-              {
-                id: 'erp-system',
-                title: 'ERP System',
-                description: 'Full enterprise resource planning solution for businesses and local governments.',
-                category: 'Both',
-                technologies: ['Java Spring Boot', 'SQL Server', 'React'],
-                gradient: 'from-emerald-500 to-emerald-600'
-              },
-              {
-                id: 'e-commerce',
-                title: 'E-commerce',
-                description: 'Online product management, order processing, and payment solution.',
-                category: 'Private',
-                technologies: ['Python FastAPI', 'PostgreSQL', 'Next.js'],
-                gradient: 'from-pink-500 to-pink-600'
-              },
-              {
-                id: 'school-management',
-                title: 'School Management',
-                description: 'Comprehensive school administration, finance, and academic system.',
-                category: 'Private',
-                technologies: ['Java Spring Boot', 'MySQL', 'React'],
-                gradient: 'from-indigo-500 to-indigo-600'
-              }
-            ].map((project) => (
-              <Card key={project.id} className="h-full group hover:shadow-naya transition-all duration-300 border-2 border-gray-200 hover:border-gray-300 shadow-card overflow-hidden bg-white">
+            {projects.map((project) => (
+              <Card key={project.id} className="h-full group hover:shadow-naya transition-all duration-300 border border-white/30 bg-white/70 backdrop-blur-md hover:bg-white/90 shadow-card overflow-hidden transform hover:scale-105 hover:-translate-y-2">
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
-                <CardHeader>
+                <CardHeader className="bg-white/80 backdrop-blur-sm">
                   <div className="flex items-center justify-between mb-2">
                     <Badge 
                       variant={project.category === 'Government' ? 'default' : 'secondary'}
-                      className={project.category === 'Government' ? 'bg-naya-blue-100 text-naya-blue-700 border-naya-blue-200' : 'bg-naya-orange-100 text-naya-orange-700 border-naya-orange-200'}
+                      className={`${project.category === 'Government' ? 'bg-naya-blue-100 text-naya-blue-700 border-naya-blue-200' : 'bg-naya-orange-100 text-naya-orange-700 border-naya-orange-200'} backdrop-blur-sm`}
                     >
                       {project.category}
                     </Badge>
@@ -510,10 +454,10 @@ const Index = () => {
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="bg-white/90 backdrop-blur-sm">
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, index) => (
-                      <Badge key={index} variant="outline" className="text-xs border-gray-300 text-gray-700">
+                      <Badge key={index} variant="outline" className="text-xs border-gray-300 text-gray-700 bg-white/60 backdrop-blur-sm">
                         {tech}
                       </Badge>
                     ))}
@@ -536,7 +480,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Technology Stack */}
+      {/* Technology Stack with Glass Effects */}
       <section className="py-20 bg-gradient-to-br from-naya-blue-50 to-naya-orange-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -547,53 +491,23 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-2 border-gray-200 shadow-card bg-white/80 backdrop-blur-sm hover:border-gray-300 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-center text-naya-blue-700">Backend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {['Java Spring Boot', 'Python Django', 'Python FastAPI', 'PHP Laravel'].map((tech) => (
-                    <div key={tech} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-naya-orange-500 mr-3" />
-                      <span className="text-gray-700">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-gray-200 shadow-card bg-white/80 backdrop-blur-sm hover:border-gray-300 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-center text-naya-blue-700">Database</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB'].map((tech) => (
-                    <div key={tech} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-naya-orange-500 mr-3" />
-                      <span className="text-gray-700">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-gray-200 shadow-card bg-white/80 backdrop-blur-sm hover:border-gray-300 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-center text-naya-blue-700">Frontend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {['React', 'Vue.js', 'Angular', 'Next.js'].map((tech) => (
-                    <div key={tech} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-naya-orange-500 mr-3" />
-                      <span className="text-gray-700">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            {techStack.map((stack, index) => (
+              <Card key={index} className="border border-white/30 bg-white/60 backdrop-blur-md shadow-card hover:bg-white/80 hover:border-gray-300 transition-all duration-300">
+                <CardHeader className="bg-white/80 backdrop-blur-sm">
+                  <CardTitle className="text-center text-naya-blue-700">{stack.category}</CardTitle>
+                </CardHeader>
+                <CardContent className="bg-white/90 backdrop-blur-sm">
+                  <div className="space-y-3">
+                    {stack.technologies.map((tech) => (
+                      <div key={tech} className="flex items-center">
+                        <CheckCircle className="h-5 w-5 text-naya-orange-500 mr-3" />
+                        <span className="text-gray-700">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

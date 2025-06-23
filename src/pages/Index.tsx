@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -32,9 +31,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import TechAnimation from "@/components/TechAnimation";
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const [currentProject, setCurrentProject] = useState(0);
 
   const carouselSlides = [
     {
@@ -196,423 +197,273 @@ const Index = () => {
     { number: '99%', label: 'Success Rate', icon: TrendingUp }
   ];
 
+  const techStack = [
+    {
+      icon: Code,
+      name: 'Programming Languages',
+      description: 'Java, Python, PHP, JavaScript, SQL'
+    },
+    {
+      icon: Database,
+      name: 'Database Management',
+      description: 'PostgreSQL, MySQL, SQL Server, MongoDB'
+    },
+    {
+      icon: Smartphone,
+      name: 'Frontend Frameworks',
+      description: 'React, Vue.js, Angular, Next.js'
+    },
+    {
+      icon: Palette,
+      name: 'Design Tools',
+      description: 'Adobe XD, Figma, Sketch'
+    }
+  ];
+
+  const nextProject = () => {
+    setCurrentProject((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section - Full Width with Enhanced Animations */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-naya-blue-50 via-white to-naya-orange-50 py-20 w-full">
-        <div className="absolute inset-0 bg-hero-pattern opacity-40 animate-pulse"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+        <TechAnimation />
         
-        {/* Floating Animation Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-naya-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_6s_ease-in-out_infinite]"></div>
-          <div className="absolute top-40 right-20 w-40 h-40 bg-naya-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_8s_ease-in-out_infinite_reverse]"></div>
-          <div className="absolute bottom-32 left-1/3 w-36 h-36 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_7s_ease-in-out_infinite]"></div>
-        </div>
-
-        <div className="w-full px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-naya-blue-600 to-naya-orange-500 animate-fade-in">
-              Innovative IT Solutions
-            </h1>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-gray-700 animate-fade-in animation-delay-200">
-              for Digital Transformation
-            </h2>
-            
-            {/* Full Width Slider with Enhanced Effects and Slide Transitions */}
-            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-8 animate-fade-in animation-delay-400">
-              <Carousel className="w-full" opts={{ 
-                align: "center", 
-                loop: true,
-                skipSnaps: false,
-                dragFree: false
-              }}>
-                <CarouselContent className="-ml-1">
-                  {carouselSlides.map((slide, index) => (
-                    <CarouselItem key={slide.id} className="pl-1 basis-full">
-                      <div className="p-1">
-                        <div className="relative h-[450px] overflow-hidden rounded-2xl group hover:shadow-2xl transition-all duration-700 transform hover:scale-[1.02]">
-                          <div 
-                            className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-all duration-700 group-hover:opacity-95 group-hover:scale-105`}
-                            style={{
-                              backgroundImage: `url(https://images.unsplash.com/${slide.bgImage}?auto=format&fit=crop&w=1920&q=80)`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center',
-                              backgroundBlendMode: 'overlay'
-                            }}
-                          ></div>
-                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-700"></div>
-                          
-                          {/* Animated particles with slide effect */}
-                          <div className="absolute inset-0 opacity-20">
-                            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-bounce transition-transform duration-700 group-hover:translate-x-2" style={{animationDelay: '0s'}}></div>
-                            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white rounded-full animate-bounce transition-transform duration-700 group-hover:-translate-x-2" style={{animationDelay: '1s'}}></div>
-                            <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-white rounded-full animate-bounce transition-transform duration-700 group-hover:translate-y-2" style={{animationDelay: '2s'}}></div>
-                          </div>
-                          
-                          <div className="relative z-10 h-full flex items-center justify-center">
-                            <div className="text-center max-w-4xl mx-auto px-8 transform transition-all duration-700 group-hover:scale-105 group-hover:translate-x-2">
-                              <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center transform transition-all duration-700 group-hover:rotate-12 group-hover:scale-110 group-hover:translate-y-2`}>
-                                <slide.icon className="h-10 w-10 text-white transition-all duration-700 group-hover:scale-125" />
-                              </div>
-                              <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white transform transition-all duration-700 group-hover:text-shadow-lg group-hover:translate-x-1">
-                                {slide.title}
-                              </h1>
-                              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90 transform transition-all duration-700 group-hover:translate-x-1">
-                                {slide.subtitle}
-                              </h2>
-                              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed transform transition-all duration-700 group-hover:translate-y-1">
-                                {slide.description}
-                              </p>
-                              <Button asChild size="lg" className="text-lg px-8 bg-white text-gray-900 hover:bg-gray-100 transition-all duration-700 transform hover:scale-105 hover:shadow-xl hover:translate-y-1 border-2 border-white/20">
-                                <Link to={slide.action.link} className="flex items-center">
-                                  {slide.action.text}
-                                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-700 group-hover:translate-x-2" />
-                                </Link>
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="left-4 bg-white/30 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/40 hover:scale-110 hover:border-white/60 transition-all duration-300 shadow-lg" />
-                <CarouselNext className="right-4 bg-white/30 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/40 hover:scale-110 hover:border-white/60 transition-all duration-300 shadow-lg" />
-              </Carousel>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Modern Carousel Section with Enhanced Animations */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">Discover NayaCode</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our journey, achievements, and comprehensive services through this interactive showcase
-            </p>
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
+          <div className="mb-8 animate-fade-in">
+            <Badge variant="secondary" className="glass-effect border border-white/20 text-white mb-6 px-4 py-2">
+              {language === 'ne' ? '🚀 नेपालको अग्रणी टेक कम्पनी' : '🚀 Nepal\'s Leading Tech Company'}
+            </Badge>
           </div>
           
-          <Carousel className="w-full max-w-6xl mx-auto animate-fade-in animation-delay-200" opts={{ 
-            align: "start", 
-            loop: true,
-            skipSnaps: false,
-            dragFree: false
-          }}>
-            <CarouselContent className="-ml-1">
-              {carouselSlides.map((slide, index) => (
-                <CarouselItem key={slide.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <Card className="h-full border-2 border-gray-200 shadow-card hover:shadow-hover hover:border-gray-300 transition-all duration-500 group overflow-hidden transform hover:scale-105 hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <div 
-                          className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-all duration-500 group-hover:opacity-95 group-hover:scale-110`}
-                          style={{
-                            backgroundImage: `url(https://images.unsplash.com/${slide.bgImage}?auto=format&fit=crop&w=600&q=80)`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundBlendMode: 'overlay'
-                          }}
-                        ></div>
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
-                        <div className="relative z-10 p-6 h-full flex flex-col justify-between">
-                          <div className={`w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-white/30`}>
-                            <slide.icon className="h-6 w-6 text-white" />
-                          </div>
-                          <div className="transform transition-transform duration-300 group-hover:translate-y-[-4px]">
-                            <h3 className="text-xl font-bold text-white mb-1">{slide.title}</h3>
-                            <p className="text-white/90 text-sm font-medium">{slide.subtitle}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <CardContent className="p-6">
-                        <p className="text-gray-600 mb-4 text-sm leading-relaxed">{slide.description}</p>
-                        <Button asChild variant="ghost" className="w-full group-hover:bg-gray-50 transition-all duration-300 hover:scale-105 text-gray-900 hover:text-gray-700 border border-gray-200 hover:border-gray-300">
-                          <Link to={slide.action.link} className="flex items-center justify-center">
-                            {slide.action.text}
-                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300" />
-            <CarouselNext className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300" />
-          </Carousel>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-slide-up">
+            {language === 'ne' ? (
+              <>
+                <span className="text-gradient">नयाँ कोड</span> मार्फत<br />
+                भविष्य निर्माण गर्दै
+              </>
+            ) : (
+              <>
+                Building the Future with<br />
+                <span className="text-gradient">NayaCode</span>
+              </>
+            )}
+          </h1>
+          
+          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto animate-fade-in animation-delay-200">
+            {language === 'ne' 
+              ? 'आधुनिक प्रविधि र रचनात्मक समाधानको साथ तपाईंको डिजिटल सपनालाई साकार पार्दै।'
+              : 'Transforming your digital dreams into reality with cutting-edge technology and creative solutions.'
+            }
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-400">
+            <Button size="lg" className="bg-gradient-primary hover:bg-gradient-primary/90 text-white border-0">
+              {language === 'ne' ? 'हाम्रो सेवा हेर्नुहोस्' : 'Explore Our Services'}
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <Button variant="outline" size="lg" className="glass-effect border-white/30 text-white hover:bg-white/20">
+              {language === 'ne' ? 'प्रोजेक्ट हेर्नुहोस्' : 'View Projects'}
+            </Button>
+          </div>
+        </div>
+        
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+          </div>
         </div>
       </section>
 
-      {/* Stats Section with Enhanced Animations */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { number: '500+', label: 'Projects Completed', icon: Target },
-              { number: '15+', label: 'Years Experience', icon: Award },
-              { number: '200+', label: 'Happy Clients', icon: Users },
-              { number: '99%', label: 'Success Rate', icon: TrendingUp }
-            ].map((stat, index) => (
-              <div key={index} className="text-center group animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${['from-naya-blue-500 to-naya-blue-600', 'from-naya-orange-500 to-naya-orange-600', 'from-purple-500 to-purple-600', 'from-emerald-500 to-emerald-600'][index]} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl border-2 border-white`}>
-                  <stat.icon className="h-8 w-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2 group-hover:scale-110 transition-transform duration-300">{stat.number}</div>
-                <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{stat.label}</p>
+      {/* Stats Section */}
+      <section className="py-20 px-4 relative">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{stat.number}</div>
+                <div className="text-white/80 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section with Enhanced Animations */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">Why Choose NayaCode</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We deliver comprehensive IT solutions with cutting-edge technology and expert teams
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Building2,
-                title: 'Government Solutions',
-                description: 'Specialized e-governance and public service solutions',
-                gradient: 'from-naya-blue-500 to-naya-blue-600'
-              },
-              {
-                icon: Users,
-                title: 'Private Sector',
-                description: 'Enterprise solutions for businesses of all sizes',
-                gradient: 'from-naya-orange-500 to-naya-orange-600'
-              },
-              {
-                icon: Code,
-                title: 'Custom Development',
-                description: 'Tailored solutions built to your exact requirements',
-                gradient: 'from-purple-500 to-purple-600'
-              },
-              {
-                icon: Database,
-                title: 'Database Management',
-                description: 'Robust data management and analytics solutions',
-                gradient: 'from-emerald-500 to-emerald-600'
-              },
-              {
-                icon: Shield,
-                title: 'Security First',
-                description: 'Enterprise-grade security and compliance',
-                gradient: 'from-red-500 to-red-600'
-              },
-              {
-                icon: Globe,
-                title: '24/7 Support',
-                description: 'Round-the-clock technical support and maintenance',
-                gradient: 'from-cyan-500 to-cyan-600'
-              }
-            ].map((feature, index) => (
-              <Card key={index} className="h-full border-2 border-gray-200 shadow-card hover:shadow-hover hover:border-gray-300 transition-all duration-500 group bg-white/80 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                <CardHeader className="text-center pb-4">
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl border-2 border-white`}>
-                    <feature.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-xl text-gray-900 group-hover:text-gray-700 transition-colors duration-300">{feature.title}</CardTitle>
-                  <CardDescription className="text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{feature.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Features Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">Featured Projects</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Showcasing our successful implementations across government and private sectors
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              {language === 'ne' ? 'हाम्रा विशेषताहरू' : 'Our Expertise'}
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              {language === 'ne' 
+                ? 'आधुनिक प्रविधि र रचनात्मक समाधानको साथ तपाईंको व्यवसायलाई अगाडि बढाउने सेवाहरू।'
+                : 'Comprehensive solutions to elevate your business with modern technology and creative innovation.'
+              }
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                id: 'darta-chalani',
-                title: 'Darta Chalani',
-                description: 'Official document registration and correspondence tracking system.',
-                category: 'Government',
-                technologies: ['Java Spring Boot', 'PostgreSQL', 'React'],
-                gradient: 'from-naya-blue-500 to-naya-blue-600'
-              },
-              {
-                id: 'vendor-enlisting',
-                title: 'Vendor Enlisting',
-                description: 'Supplier registration and approval system for procurement processes.',
-                category: 'Government',
-                technologies: ['PHP Laravel', 'MySQL', 'Vue.js'],
-                gradient: 'from-naya-orange-500 to-naya-orange-600'
-              },
-              {
-                id: 'loan-management',
-                title: 'Loan Management',
-                description: 'Full loan application, approval, and repayment tracking system.',
-                category: 'Private',
-                technologies: ['Python Django', 'PostgreSQL', 'Angular'],
-                gradient: 'from-purple-500 to-purple-600'
-              },
-              {
-                id: 'erp-system',
-                title: 'ERP System',
-                description: 'Full enterprise resource planning solution for businesses and local governments.',
-                category: 'Both',
-                technologies: ['Java Spring Boot', 'SQL Server', 'React'],
-                gradient: 'from-emerald-500 to-emerald-600'
-              },
-              {
-                id: 'e-commerce',
-                title: 'E-commerce',
-                description: 'Online product management, order processing, and payment solution.',
-                category: 'Private',
-                technologies: ['Python FastAPI', 'PostgreSQL', 'Next.js'],
-                gradient: 'from-pink-500 to-pink-600'
-              },
-              {
-                id: 'school-management',
-                title: 'School Management',
-                description: 'Comprehensive school administration, finance, and academic system.',
-                category: 'Private',
-                technologies: ['Java Spring Boot', 'MySQL', 'React'],
-                gradient: 'from-indigo-500 to-indigo-600'
-              }
-            ].map((project) => (
-              <Card key={project.id} className="h-full group hover:shadow-naya transition-all duration-300 border-2 border-gray-200 hover:border-gray-300 shadow-card overflow-hidden bg-white">
-                <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} className="glass-effect border border-white/20 hover:border-white/40 transition-all duration-300 hover:shadow-hover group">
                 <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge 
-                      variant={project.category === 'Government' ? 'default' : 'secondary'}
-                      className={project.category === 'Government' ? 'bg-naya-blue-100 text-naya-blue-700 border-naya-blue-200' : 'bg-naya-orange-100 text-naya-orange-700 border-naya-orange-200'}
-                    >
-                      {project.category}
-                    </Badge>
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-lg group-hover:text-naya-blue-600 transition-colors">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm text-gray-600">
-                    {project.description}
-                  </CardDescription>
+                  <CardTitle className="text-white">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, index) => (
-                      <Badge key={index} variant="outline" className="text-xs border-gray-300 text-gray-700">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  <Button asChild variant="ghost" className="w-full group-hover:bg-naya-blue-50 group-hover:text-naya-blue-700 transition-colors text-gray-900 border border-gray-200 hover:border-naya-blue-200">
-                    <Link to={`/project/${project.id}`} className="flex items-center justify-center">
-                      View Details <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <CardDescription className="text-white/70">{feature.description}</CardDescription>
                 </CardContent>
               </Card>
             ))}
           </div>
-          
-          <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-gradient-primary hover:shadow-hover transition-all duration-300 text-white border-2 border-transparent hover:border-white/20">
-              <Link to="/projects">View All Projects</Link>
+        </div>
+      </section>
+
+      {/* Projects Carousel */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              {language === 'ne' ? 'हाम्रा प्रोजेक्टहरू' : 'Our Projects'}
+            </h2>
+            <p className="text-xl text-white/70">
+              {language === 'ne' 
+                ? 'हामीले सफलतापूर्वक सम्पन्न गरेका केही उत्कृष्ट प्रोजेक्टहरू।'
+                : 'Showcasing some of our most successful and innovative projects.'
+              }
+            </p>
+          </div>
+
+          <div className="relative max-w-4xl mx-auto">
+            <div className="overflow-hidden rounded-2xl">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentProject * 100}%)` }}
+              >
+                {projects.map((project, index) => (
+                  <div key={index} className="w-full flex-shrink-0">
+                    <Card className="glass-effect border border-white/20 overflow-hidden">
+                      <div className="aspect-video bg-gradient-secondary relative overflow-hidden">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      </div>
+                      <CardHeader>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {project.tags.map((tag, tagIndex) => (
+                            <Badge key={tagIndex} variant="secondary" className="bg-white/10 text-white">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                        <CardTitle className="text-white text-2xl">{project.title}</CardTitle>
+                        <CardDescription className="text-white/70 text-lg">{project.description}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 glass-effect border-white/30 text-white hover:bg-white/20"
+              onClick={prevProject}
+            >
+              <ChevronLeft className="h-4 w-4" />
             </Button>
+            
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 glass-effect border-white/30 text-white hover:bg-white/20"
+              onClick={nextProject}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <div className="flex justify-center mt-8 space-x-2">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentProject ? 'bg-white' : 'bg-white/30'
+                }`}
+                onClick={() => setCurrentProject(index)}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Technology Stack */}
-      <section className="py-20 bg-gradient-to-br from-naya-blue-50 to-naya-orange-50">
-        <div className="container mx-auto px-4">
+      {/* Tech Stack */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">Technology Stack</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We use modern, proven technologies to build scalable and maintainable solutions
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              {language === 'ne' ? 'हाम्रो प्रविधि स्ट्याक' : 'Our Tech Stack'}
+            </h2>
+            <p className="text-xl text-white/70">
+              {language === 'ne' 
+                ? 'अत्याधुनिक प्रविधिहरू जसको प्रयोग गरेर हामी उत्कृष्ट समाधान प्रदान गर्छौं।'
+                : 'Cutting-edge technologies we use to deliver exceptional solutions.'
+              }
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-2 border-gray-200 shadow-card bg-white/80 backdrop-blur-sm hover:border-gray-300 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-center text-naya-blue-700">Backend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {['Java Spring Boot', 'Python Django', 'Python FastAPI', 'PHP Laravel'].map((tech) => (
-                    <div key={tech} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-naya-orange-500 mr-3" />
-                      <span className="text-gray-700">{tech}</span>
-                    </div>
-                  ))}
+
+          <div className="flex flex-wrap justify-center gap-6">
+            {techStack.map((tech, index) => (
+              <div
+                key={index}
+                className="glass-effect border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all duration-300 hover:scale-105 group"
+              >
+                <div className="text-center">
+                  <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                    {tech.icon}
+                  </div>
+                  <div className="text-white font-semibold">{tech.name}</div>
                 </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-gray-200 shadow-card bg-white/80 backdrop-blur-sm hover:border-gray-300 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-center text-naya-blue-700">Database</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB'].map((tech) => (
-                    <div key={tech} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-naya-orange-500 mr-3" />
-                      <span className="text-gray-700">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-gray-200 shadow-card bg-white/80 backdrop-blur-sm hover:border-gray-300 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-center text-naya-blue-700">Frontend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {['React', 'Vue.js', 'Angular', 'Next.js'].map((tech) => (
-                    <div key={tech} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-naya-orange-500 mr-3" />
-                      <span className="text-gray-700">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-hero-pattern opacity-20"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-4 text-white">Ready to Start Your Project with NayaCode?</h2>
-          <p className="text-xl mb-8 text-white/90 max-w-3xl mx-auto">
-            Let's discuss how we can help transform your business with our innovative IT solutions
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="text-lg px-8 bg-white text-naya-blue-700 hover:bg-gray-100 border-2 border-white hover:border-gray-200 font-semibold">
-              <Link to="/contact">Get Started Today</Link>
-            </Button>
-            <Button asChild size="lg" className="text-lg px-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-naya-blue-700 transition-all duration-300 font-semibold">
-              <Link to="/services">Explore Services</Link>
-            </Button>
+      <section className="py-20 px-4">
+        <div className="container mx-auto text-center">
+          <div className="glass-effect border border-white/20 rounded-3xl p-12 max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              {language === 'ne' ? 'तपाईंको प्रोजेक्ट सुरु गरौं' : 'Let\'s Start Your Project'}
+            </h2>
+            <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+              {language === 'ne' 
+                ? 'तपाईंको डिजिटल सपनालाई साकार पार्न आज नै हामीसँग सम्पर्क गर्नुहोस्।'
+                : 'Ready to transform your digital dreams into reality? Let\'s discuss your project today.'
+              }
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-gradient-primary hover:bg-gradient-primary/90 text-white border-0">
+                {language === 'ne' ? 'सेवाहरू अन्वेषण गर्नुहोस्' : 'Explore Services'}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button variant="outline" size="lg" className="glass-effect border-white/30 text-white hover:bg-white/20">
+                {language === 'ne' ? 'सम्पर्क गर्नुहोस्' : 'Contact Us'}
+              </Button>
+            </div>
           </div>
         </div>
       </section>

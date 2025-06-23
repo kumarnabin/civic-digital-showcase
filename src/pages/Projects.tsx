@@ -397,15 +397,15 @@ const Projects = () => {
                 placeholder={language === 'ne' ? 'परियोजना खोज्नुहोस्...' : 'Search projects...'}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 bg-white/70 backdrop-blur-md border border-white/30 shadow-xl"
               />
             </div>
           </div>
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-            <SelectTrigger className="w-full md:w-[200px]">
+            <SelectTrigger className="w-full md:w-[200px] bg-white/70 backdrop-blur-md border border-white/30 shadow-xl">
               <SelectValue placeholder={language === 'ne' ? 'श्रेणी छान्नुहोस्' : 'Select category'} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white/90 backdrop-blur-md border border-white/30 shadow-2xl">
               <SelectItem value="all">
                 {language === 'ne' ? 'सबै श्रेणी' : 'All Categories'}
               </SelectItem>
@@ -425,7 +425,7 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <Card key={project.id} className="h-full group hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <Card key={project.id} className="h-full group hover:shadow-2xl transition-all duration-300 overflow-hidden border border-white/20 bg-white/70 backdrop-blur-md shadow-2xl hover:bg-white/80 hover:border-white/40 transform hover:scale-105 hover:-translate-y-2">
               {/* Project Screenshot */}
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -435,7 +435,7 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                 <Badge 
-                  className={`absolute top-4 left-4 ${project.category === "government" ? "bg-blue-600" : "bg-purple-600"}`}
+                  className={`absolute top-4 left-4 ${project.category === "government" ? "bg-blue-600/80" : project.category === "private" ? "bg-purple-600/80" : "bg-emerald-600/80"} backdrop-blur-sm border border-white/30 shadow-lg`}
                 >
                   {project.category === "government" 
                     ? (language === 'ne' ? 'सरकारी' : 'Government')
@@ -446,7 +446,7 @@ const Projects = () => {
                 </Badge>
               </div>
 
-              <CardHeader>
+              <CardHeader className="bg-white/80 backdrop-blur-sm border-t border-white/30">
                 <div className="flex items-center justify-between mb-2">
                   <project.icon className="h-6 w-6 text-primary" />
                 </div>
@@ -457,7 +457,7 @@ const Projects = () => {
                   {project.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="bg-white/90 backdrop-blur-sm">
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold mb-2 text-sm">
@@ -471,17 +471,17 @@ const Projects = () => {
                   </div>
                   <div className="flex flex-wrap gap-1">
                     {project.technologies.slice(0, 2).map((tech, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
+                      <Badge key={index} variant="outline" className="text-xs bg-white/60 backdrop-blur-sm border-white/40">
                         {tech}
                       </Badge>
                     ))}
                     {project.technologies.length > 2 && (
-                      <Badge variant="outline" className="text-xs">
+                      <Badge variant="outline" className="text-xs bg-white/60 backdrop-blur-sm border-white/40">
                         +{project.technologies.length - 2}
                       </Badge>
                     )}
                   </div>
-                  <Button asChild className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Button asChild className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors bg-white/80 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl">
                     <Link to={`/project/${project.id}`} className="flex items-center justify-center">
                       {language === 'ne' ? 'विवरण हेर्नुहोस्' : 'View Details'} 
                       <ArrowRight className="ml-2 h-4 w-4" />

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -265,7 +264,7 @@ const Index = () => {
                   {carouselSlides.map((slide, index) => (
                     <CarouselItem key={slide.id} className="pl-1 basis-full">
                       <div className="p-1">
-                        <div className="relative h-[450px] overflow-hidden rounded-2xl group hover:shadow-2xl transition-all duration-700 transform hover:scale-[1.02]">
+                        <div className="relative h-[450px] overflow-hidden rounded-2xl group hover:shadow-2xl transition-all duration-700 transform hover:scale-[1.02] shadow-2xl">
                           <div 
                             className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-all duration-700 group-hover:opacity-95 group-hover:scale-105`}
                             style={{
@@ -339,7 +338,7 @@ const Index = () => {
               {carouselSlides.map((slide, index) => (
                 <CarouselItem key={slide.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Card className="h-full border border-white/20 bg-white/70 backdrop-blur-md shadow-card hover:shadow-hover hover:bg-white/80 transition-all duration-500 group overflow-hidden transform hover:scale-105 hover:-translate-y-2">
+                    <Card className="h-full border border-white/20 bg-white/70 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group overflow-hidden transform hover:scale-105 hover:-translate-y-2">
                       <div className="relative h-48 overflow-hidden">
                         <div 
                           className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-all duration-500 group-hover:opacity-95 group-hover:scale-110`}
@@ -387,7 +386,7 @@ const Index = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${['from-naya-blue-500 to-naya-blue-600', 'from-naya-orange-500 to-naya-orange-600', 'from-purple-500 to-purple-600', 'from-emerald-500 to-emerald-600'][index]} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl border-2 border-white`}>
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${['from-naya-blue-500 to-naya-blue-600', 'from-naya-orange-500 to-naya-orange-600', 'from-purple-500 to-purple-600', 'from-emerald-500 to-emerald-600'][index]} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-2xl border-2 border-white`}>
                   <stat.icon className="h-8 w-8 text-white" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-2 group-hover:scale-110 transition-transform duration-300">{stat.number}</div>
@@ -410,13 +409,13 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="h-full border border-white/30 bg-white/60 backdrop-blur-md shadow-card hover:shadow-hover hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="h-full border border-white/30 bg-white/60 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader className="text-center pb-4 bg-white/80 backdrop-blur-sm">
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl border-2 border-white`}>
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-2xl border-2 border-white`}>
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-gray-900 group-hover:text-gray-700 transition-colors duration-300">{feature.title}</CardTitle>
-                  <CardDescription className="text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{feature.description}</CardDescription>
+                  <CardTitle className="text-xl text-gray-900 group-hover:text-gray-700 transition-colors">{feature.title}</CardTitle>
+                  <CardDescription className="text-base text-gray-600 group-hover:text-gray-700 transition-colors">{feature.description}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -436,7 +435,7 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
-              <Card key={project.id} className="h-full group hover:shadow-naya transition-all duration-300 border border-white/30 bg-white/70 backdrop-blur-md hover:bg-white/90 shadow-card overflow-hidden transform hover:scale-105 hover:-translate-y-2">
+              <Card key={project.id} className="h-full group hover:shadow-2xl transition-all duration-300 border border-white/30 bg-white/70 backdrop-blur-md hover:bg-white/90 shadow-2xl overflow-hidden transform hover:scale-105 hover:-translate-y-2">
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
                 <CardHeader className="bg-white/80 backdrop-blur-sm">
                   <div className="flex items-center justify-between mb-2">
@@ -492,7 +491,7 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {techStack.map((stack, index) => (
-              <Card key={index} className="border border-white/30 bg-white/60 backdrop-blur-md shadow-card hover:bg-white/80 hover:border-gray-300 transition-all duration-300">
+              <Card key={index} className="border border-white/30 bg-white/60 backdrop-blur-md shadow-2xl hover:bg-white/80 hover:border-gray-300 hover:shadow-2xl transition-all duration-300">
                 <CardHeader className="bg-white/80 backdrop-blur-sm">
                   <CardTitle className="text-center text-naya-blue-700">{stack.category}</CardTitle>
                 </CardHeader>

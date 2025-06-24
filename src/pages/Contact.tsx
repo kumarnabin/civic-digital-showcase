@@ -58,8 +58,7 @@ const Contact = () => {
                     <h4 className="font-semibold">Office Address</h4>
                     <p className="text-muted-foreground">
                       Kathmandu, Nepal<br />
-                      New Baneshwor, Ward No. 10<br />
-                      Building No. 123, Floor 5
+                      New Baneshwor
                     </p>
                   </div>
                 </div>
@@ -69,8 +68,8 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold">Phone Numbers</h4>
                     <p className="text-muted-foreground">
-                      +977-1-4567890<br />
-                      +977-9841234567
+                      +977-9860061089<br />
+                      +977-98019778410
                     </p>
                   </div>
                 </div>
@@ -80,8 +79,8 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold">Email Addresses</h4>
                     <p className="text-muted-foreground">
-                      info@itsolutions.com.np<br />
-                      projects@itsolutions.com.np
+                      info@nayacode.com<br />
+                      projects@nayacode.com
                     </p>
                   </div>
                 </div>

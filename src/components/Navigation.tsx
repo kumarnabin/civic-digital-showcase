@@ -4,13 +4,20 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Sun, Moon, Monitor, Globe } from 'lucide-react';
+import { Sun, Moon, Monitor, Globe, Menu } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 
 const Navigation = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -43,6 +50,7 @@ const Navigation = () => {
             <span className="font-bold text-xl text-primary">NayaCode</span>
           </Link>
           
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
@@ -99,6 +107,44 @@ const Navigation = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Mobile Menu */}
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-5 w-5" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="bg-white/90 backdrop-blur-md border border-white/30 shadow-2xl">
+                  <SheetHeader>
+                    <SheetTitle className="flex items-center space-x-3">
+                      <img 
+                        src="https://nayacode.com/images/Image-2025033006063823.Naya1.png" 
+                        alt="NayaCode Logo" 
+                        className="h-8 w-auto"
+                      />
+                      <span className="text-primary">NayaCode</span>
+                    </SheetTitle>
+                  </SheetHeader>
+                  <div className="mt-8 space-y-4">
+                    {navItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className={`block text-lg font-medium transition-colors hover:text-primary p-2 rounded-md ${
+                          isActive(item.path) 
+                            ? 'text-primary bg-primary/10' 
+                            : 'text-muted-foreground hover:bg-muted/50'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>

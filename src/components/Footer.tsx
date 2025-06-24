@@ -19,7 +19,14 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-bold text-lg mb-4 text-gradient">NayaCode</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="https://nayacode.com/images/Image-2025033006063823.Naya1.png" 
+                alt="NayaCode Logo" 
+                className="h-8 w-auto"
+              />
+              <h3 className="font-bold text-lg text-gradient">NayaCode</h3>
+            </div>
             <p className="text-muted-foreground">
               Professional IT solutions for government and private sector projects with modern technology stack.
             </p>

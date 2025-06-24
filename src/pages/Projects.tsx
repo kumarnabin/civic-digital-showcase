@@ -450,17 +450,17 @@ const Projects = () => {
                 <div className="flex items-center justify-between mb-2">
                   <project.icon className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                <CardTitle className="text-lg text-foreground transition-colors">
                   {project.title}
                 </CardTitle>
-                <CardDescription className="text-sm">
+                <CardDescription className="text-sm text-muted-foreground">
                   {project.description}
                 </CardDescription>
               </CardHeader>
               <CardContent className="bg-white/90 backdrop-blur-sm">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold mb-2 text-sm">
+                    <h4 className="font-semibold mb-2 text-sm text-foreground">
                       {language === 'ne' ? 'मुख्य सुविधाहरू:' : 'Key Features:'}
                     </h4>
                     <ul className="text-xs text-muted-foreground space-y-1">
@@ -481,7 +481,7 @@ const Projects = () => {
                       </Badge>
                     )}
                   </div>
-                  <Button asChild className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors bg-white/80 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl">
+                  <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
                     <Link to={`/project/${project.id}`} className="flex items-center justify-center">
                       {language === 'ne' ? 'विवरण हेर्नुहोस्' : 'View Details'} 
                       <ArrowRight className="ml-2 h-4 w-4" />

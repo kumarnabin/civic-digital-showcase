@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -24,7 +25,16 @@ import {
   Star,
   Camera,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  MessageSquare,
+  FileText,
+  RefreshCw,
+  Zap,
+  Eye,
+  UserCheck,
+  ClipboardCheck,
+  BookOpen,
+  Handshake
 } from 'lucide-react';
 import {
   Carousel,
@@ -230,6 +240,79 @@ const Index = () => {
     }
   ];
 
+  const methodology = [
+    {
+      step: '1',
+      title: 'Initial Consultation & Understanding',
+      description: 'Multiple sittings to understand the real problem. Build trust and simplify technical terms.',
+      icon: MessageSquare,
+      gradient: 'from-naya-blue-500 to-naya-blue-600'
+    },
+    {
+      step: '2',
+      title: 'Requirement Discovery & Flexible Scoping',
+      description: 'Gather requirements in phases. Accept that scope may evolve. Prioritize government compliance and documentation.',
+      icon: FileText,
+      gradient: 'from-emerald-500 to-emerald-600'
+    },
+    {
+      step: '3',
+      title: 'Iterative Proposal & Approval',
+      description: 'Submit step-wise proposals. Get approval on each small milestone. Government clients prefer seeing documents before development.',
+      icon: ClipboardCheck,
+      gradient: 'from-purple-500 to-purple-600'
+    },
+    {
+      step: '4',
+      title: 'Module-Based Development (Agile Inspired)',
+      description: 'Deliver small, workable modules quickly. Show frequent demos.',
+      icon: Zap,
+      gradient: 'from-naya-orange-500 to-naya-orange-600'
+    },
+    {
+      step: '5',
+      title: 'Client Review & Verbal Feedback',
+      description: 'Focus on in-person/virtual meetings. Nepali clients often give feedback verbally instead of written reports.',
+      icon: UserCheck,
+      gradient: 'from-cyan-500 to-cyan-600'
+    },
+    {
+      step: '6',
+      title: 'Frequent Changes Handling',
+      description: 'Prepare for requirement changes even in later stages. Flexibility is key.',
+      icon: RefreshCw,
+      gradient: 'from-pink-500 to-pink-600'
+    },
+    {
+      step: '7',
+      title: 'Progress Reporting & Physical Meetings',
+      description: 'Weekly progress reports. Monthly physical meetings if possible.',
+      icon: Calendar,
+      gradient: 'from-indigo-500 to-indigo-600'
+    },
+    {
+      step: '8',
+      title: 'Testing with Client\'s Team',
+      description: 'Joint testing with government representatives. Detailed bug fixing sessions.',
+      icon: Eye,
+      gradient: 'from-red-500 to-red-600'
+    },
+    {
+      step: '9',
+      title: 'Training & Capacity Building',
+      description: 'Conduct training for government staff. Prepare detailed user manuals in Nepali if needed.',
+      icon: BookOpen,
+      gradient: 'from-amber-500 to-amber-600'
+    },
+    {
+      step: '10',
+      title: 'Approval & Final Handover',
+      description: 'Final approval may require multiple handover sessions. Provide long-term support options.',
+      icon: Handshake,
+      gradient: 'from-green-500 to-green-600'
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section - Full Width with Enhanced Animations */}
@@ -318,65 +401,34 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Modern Carousel Section with Enhanced Glass Effects */}
+      {/* Working Methodology Section for Nepali and Government Clients */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">Discover NayaCode</h2>
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">Our Working Methodology</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our journey, achievements, and comprehensive services through this interactive showcase
+              Specialized approach for Nepali and Government clients, built on trust, flexibility, and cultural understanding
             </p>
           </div>
           
-          <Carousel className="w-full max-w-6xl mx-auto animate-fade-in animation-delay-200" opts={{ 
-            align: "start", 
-            loop: true,
-            skipSnaps: false,
-            dragFree: false
-          }}>
-            <CarouselContent className="-ml-1">
-              {carouselSlides.map((slide, index) => (
-                <CarouselItem key={slide.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <Card className="h-full border border-white/20 bg-white/70 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group overflow-hidden transform hover:scale-105 hover:-translate-y-2">
-                      <div className="relative h-48 overflow-hidden">
-                        <div 
-                          className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-90 transition-all duration-500 group-hover:opacity-95 group-hover:scale-110`}
-                          style={{
-                            backgroundImage: `url(https://images.unsplash.com/${slide.bgImage}?auto=format&fit=crop&w=600&q=80)`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundBlendMode: 'overlay'
-                          }}
-                        ></div>
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
-                        <div className="relative z-10 p-6 h-full flex flex-col justify-between">
-                          <div className={`w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-white/30`}>
-                            <slide.icon className="h-6 w-6 text-white" />
-                          </div>
-                          <div className="transform transition-transform duration-300 group-hover:translate-y-[-4px]">
-                            <h3 className="text-xl font-bold text-white mb-1">{slide.title}</h3>
-                            <p className="text-white/90 text-sm font-medium">{slide.subtitle}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <CardContent className="p-6 bg-white/90 backdrop-blur-sm">
-                        <p className="text-gray-600 mb-4 text-sm leading-relaxed">{slide.description}</p>
-                        <Button asChild variant="ghost" className="w-full group-hover:bg-gray-50 transition-all duration-300 hover:scale-105 text-gray-900 hover:text-gray-700 border border-gray-200 hover:border-gray-300">
-                          <Link to={slide.action.link} className="flex items-center justify-center">
-                            {slide.action.text}
-                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {methodology.map((step, index) => (
+              <Card key={index} className="h-full border border-white/30 bg-white/70 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                <CardHeader className="text-left pb-4 bg-white/80 backdrop-blur-sm">
+                  <div className="flex items-center mb-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-2xl border-2 border-white mr-4`}>
+                      <step.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold text-sm`}>
+                      {step.step}
+                    </div>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white/80 backdrop-blur-sm border-2 border-white/30 text-gray-700 hover:bg-white/90 hover:border-gray-300" />
-            <CarouselNext className="hidden md:flex hover:scale-110 transition-transform duration-300 bg-white/80 backdrop-blur-sm border-2 border-white/30 text-gray-700 hover:bg-white/90 hover:border-gray-300" />
-          </Carousel>
+                  <CardTitle className="text-lg text-gray-900 group-hover:text-gray-700 transition-colors mb-2">{step.title}</CardTitle>
+                  <CardDescription className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">{step.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 

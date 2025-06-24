@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -34,7 +33,8 @@ import {
   UserCheck,
   ClipboardCheck,
   BookOpen,
-  Handshake
+  Handshake,
+  ArrowDown
 } from 'lucide-react';
 import {
   Carousel,
@@ -401,7 +401,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Working Methodology Section for Nepali and Government Clients */}
+      {/* Working Methodology Section for Nepali and Government Clients - Updated with Arrow Flow */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
@@ -411,22 +411,99 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {methodology.map((step, index) => (
-              <Card key={index} className="h-full border border-white/30 bg-white/70 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                <CardHeader className="text-left pb-4 bg-white/80 backdrop-blur-sm">
-                  <div className="flex items-center mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-2xl border-2 border-white mr-4`}>
-                      <step.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold text-sm`}>
-                      {step.step}
-                    </div>
+          {/* Desktop Flow Layout - Horizontal with Arrows */}
+          <div className="hidden lg:block max-w-7xl mx-auto">
+            <div className="grid grid-cols-5 gap-4 mb-8">
+              {methodology.slice(0, 5).map((step, index) => (
+                <React.Fragment key={index}>
+                  <div className="relative animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <Card className="h-full border border-white/30 bg-white/70 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2">
+                      <CardHeader className="text-center pb-4 bg-white/80 backdrop-blur-sm">
+                        <div className="flex flex-col items-center mb-4">
+                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-2xl border-2 border-white mb-2`}>
+                            <step.icon className="h-6 w-6 text-white" />
+                          </div>
+                          <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold text-sm`}>
+                            {step.step}
+                          </div>
+                        </div>
+                        <CardTitle className="text-sm text-gray-900 group-hover:text-gray-700 transition-colors mb-2">{step.title}</CardTitle>
+                        <CardDescription className="text-xs text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">{step.description}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                    {/* Arrow to next step */}
+                    {index < 4 && (
+                      <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 z-10">
+                        <ArrowRight className="h-8 w-8 text-naya-blue-500 animate-pulse" />
+                      </div>
+                    )}
                   </div>
-                  <CardTitle className="text-lg text-gray-900 group-hover:text-gray-700 transition-colors mb-2">{step.title}</CardTitle>
-                  <CardDescription className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">{step.description}</CardDescription>
-                </CardHeader>
-              </Card>
+                </React.Fragment>
+              ))}
+            </div>
+            
+            {/* Center Arrow Down */}
+            <div className="flex justify-center mb-8">
+              <ArrowDown className="h-12 w-12 text-naya-blue-500 animate-bounce" />
+            </div>
+            
+            <div className="grid grid-cols-5 gap-4">
+              {methodology.slice(5, 10).map((step, index) => (
+                <React.Fragment key={index + 5}>
+                  <div className="relative animate-fade-in" style={{animationDelay: `${(index + 5) * 0.1}s`}}>
+                    <Card className="h-full border border-white/30 bg-white/70 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2">
+                      <CardHeader className="text-center pb-4 bg-white/80 backdrop-blur-sm">
+                        <div className="flex flex-col items-center mb-4">
+                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-2xl border-2 border-white mb-2`}>
+                            <step.icon className="h-6 w-6 text-white" />
+                          </div>
+                          <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold text-sm`}>
+                            {step.step}
+                          </div>
+                        </div>
+                        <CardTitle className="text-sm text-gray-900 group-hover:text-gray-700 transition-colors mb-2">{step.title}</CardTitle>
+                        <CardDescription className="text-xs text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">{step.description}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                    {/* Arrow to next step */}
+                    {index < 4 && (
+                      <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 z-10">
+                        <ArrowRight className="h-8 w-8 text-naya-blue-500 animate-pulse" />
+                      </div>
+                    )}
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile/Tablet Vertical Flow Layout */}
+          <div className="lg:hidden max-w-2xl mx-auto">
+            {methodology.map((step, index) => (
+              <React.Fragment key={index}>
+                <div className="relative animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                  <Card className="mb-4 border border-white/30 bg-white/70 backdrop-blur-md shadow-2xl hover:shadow-naya hover:bg-white/80 transition-all duration-500 group transform hover:scale-105 hover:-translate-y-2">
+                    <CardHeader className="text-left pb-4 bg-white/80 backdrop-blur-sm">
+                      <div className="flex items-center mb-4">
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-2xl border-2 border-white mr-4`}>
+                          <step.icon className="h-6 w-6 text-white" />
+                        </div>
+                        <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold text-sm`}>
+                          {step.step}
+                        </div>
+                      </div>
+                      <CardTitle className="text-lg text-gray-900 group-hover:text-gray-700 transition-colors mb-2">{step.title}</CardTitle>
+                      <CardDescription className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">{step.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </div>
+                {/* Vertical Arrow to next step */}
+                {index < methodology.length - 1 && (
+                  <div className="flex justify-center mb-4">
+                    <ArrowDown className="h-8 w-8 text-naya-blue-500 animate-pulse" />
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>

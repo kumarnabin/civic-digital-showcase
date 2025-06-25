@@ -328,10 +328,10 @@ const Index = () => {
 
         <div className="w-full px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-naya-blue-600 to-naya-orange-500 animate-fade-in">
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-naya-blue-600 to-naya-orange-500 animate-fade-in cursor-pointer transition-all duration-500 hover:scale-105 hover:translate-x-2 hover:translate-y-1 hover:from-naya-orange-600 hover:to-naya-blue-500 hover:drop-shadow-2xl">
               Innovative IT Solutions
             </h1>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-gray-700 animate-fade-in animation-delay-200">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-gray-700 animate-fade-in animation-delay-200 cursor-pointer transition-all duration-500 hover:scale-105 hover:translate-x-1 hover:translate-y-1 hover:text-naya-blue-600 hover:drop-shadow-lg">
               for Digital Transformation
             </h2>
             
